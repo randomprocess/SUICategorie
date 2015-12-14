@@ -1,4 +1,4 @@
-//
+                                                                                 //
 //  UIViewController+SUIAdditions.m
 //  SUIToolKitDemo
 //
@@ -11,6 +11,7 @@
 #import "NSString+SUIAdditions.h"
 #import "SUIMacros.h"
 #import "UIView+SUIAdditions.h"
+#import "RACDelegateProxy.h"
 
 @implementation UIViewController (SUIAdditions)
 
@@ -124,20 +125,24 @@
     //
 }
 
-- (IBAction)sui_navPopToLast:(id)sender
+- (IBAction)sui_backToLast:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.navigationController) {
+        if (self.navigationController.viewControllers.count == 1) {
+            [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            }];
+        } else {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } else {
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }
 }
 
-- (IBAction)sui_navPopToRoot:(id)sender
+- (IBAction)sui_backToRoot:(id)sender
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
-- (IBAction)sui_navDismiss:(id)sender
-{
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-    }];
 }
 
 
@@ -187,8 +192,254 @@
 
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
+ *  Alert & ActionSheet
+ *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
+
+#pragma mark - *** Alert & ActionSheet ***
+
+@interface SUIAlertAction ()
+
+@property (nonatomic,copy) void (^sui_handler)(SUIAlertAction *cAction);
+
+@end
+
+@implementation SUIAlertAction
+
++ (instancetype)actionWithTitle:(NSString *)cTitle style:(SUIAlertActionStyle)cStyle handler:(void (^)(SUIAlertAction *))cHandler
+{
+    SUIAlertAction *curAlertAction = [SUIAlertAction new];
+    [curAlertAction sui_actionWithTitle:cTitle style:cStyle handler:cHandler];
+    return curAlertAction;
+}
+
+- (void)sui_actionWithTitle:(NSString *)cTitle style:(SUIAlertActionStyle)cStyle handler:(void (^)(SUIAlertAction *))cHandler
+{
+    _enabled = YES;
+    _style = cStyle;
+    _title = cTitle;
+    self.sui_handler = cHandler;
+}
+
+@end
+
+
+@interface SUIAlertController () <UIActionSheetDelegate, UIAlertViewDelegate>
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
+@property (nonatomic,strong) NSMutableArray<SUIAlertAction *> *sui_actions;
+
+// iOS7
+@property (nonatomic,weak) UIAlertView *sui_alertView;
+@property (nonatomic,weak) UIActionSheet *sui_actionSheet;
+
+#pragma clang diagnostic pop
+
+// iOS8 +
+@property (nonatomic,weak) UIViewController *sui_vc;
+@property (nonatomic,weak) UIAlertController *sui_alertController;
+
+@end
+
+@implementation SUIAlertController
+
+- (void)sui_showAlertWithTitle:(NSString *)cTitle
+                       message:(NSString *)cMessage
+                         style:(SUIAlertStyle)cStyle
+{
+    self.title = cTitle;
+    self.message = cMessage;
+    _style = cStyle;
+}
+
+- (void)addAction:(SUIAlertAction *)cAction
+{
+    [self.sui_actions addObject:cAction];
+}
+
+- (void)show
+{
+    [self sui_showAlertController];
+}
+
+- (void)sui_showAlertController
+{
+    if (kAboveIOS8)
+    {
+        UIAlertController *curAlertController = [UIAlertController alertControllerWithTitle:self.title message:self.message preferredStyle:(UIAlertControllerStyle)self.style];
+        self.sui_alertController = curAlertController;
+        [curAlertController sui_setAssociatedObject:self key:_cmd policy:OBJC_ASSOCIATION_RETAIN_NONATOMIC];
+        
+        for (SUIAlertAction *cAction in self.sui_actions) {
+            
+            @weakify(cAction)
+            UIAlertAction *curAction = [UIAlertAction actionWithTitle:cAction.title style:(UIAlertActionStyle)cAction.style handler:^(UIAlertAction * _Nonnull action) {
+                @strongify(cAction)
+                if (cAction.sui_handler) {
+                    cAction.sui_handler(cAction);
+                }
+            }];
+            [self.sui_alertController addAction:curAction];
+            
+            RAC(curAction, enabled) = RACObserve(cAction, enabled);
+        }
+        [self.sui_vc presentViewController:self.sui_alertController animated:YES completion:nil];
+    }
+    else
+    {
+        {
+            __block SUIAlertAction *cancelAlertAction = nil;
+            __block NSInteger curIndex = 0;
+            [self.sui_actions enumerateObjectsUsingBlock:^(SUIAlertAction * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if (obj.style == SUIAlertActionStyleCancel) {
+                    cancelAlertAction = obj;
+                    curIndex = idx;
+                    *stop = YES;
+                }
+            }];
+            
+            if (cancelAlertAction && curIndex > 0)
+            {
+                [self.sui_actions removeObject:cancelAlertAction];
+                [self.sui_actions insertObject:cancelAlertAction atIndex:0];
+            }
+            
+            
+            if (self.style == SUIAlertStyleActionSheet)
+            {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+                UIActionSheet *curActionSheet = [[UIActionSheet alloc] initWithTitle:self.title
+                                                                            delegate:nil
+                                                                   cancelButtonTitle:cancelAlertAction.title
+                                                              destructiveButtonTitle:nil
+                                                                   otherButtonTitles:nil, nil];
+#pragma clang diagnostic pop
+                self.sui_actionSheet = curActionSheet;
+                [curActionSheet sui_setAssociatedObject:self key:_cmd policy:OBJC_ASSOCIATION_RETAIN_NONATOMIC];
+
+                [self.sui_actions enumerateObjectsUsingBlock:^(SUIAlertAction * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if (cancelAlertAction != obj) {
+                        [curActionSheet addButtonWithTitle:obj.title];
+                        if (obj.style == SUIAlertActionStyleDestructive) {
+                            curActionSheet.destructiveButtonIndex = idx;
+                        }
+                    }
+                }];
+                
+                @weakify(self)
+                [[curActionSheet rac_buttonClickedSignal] subscribeNext:^(NSNumber *cIndex) {
+                    @strongify(self)
+                    SUIAlertAction *curAlertAction = self.sui_actions[cIndex.integerValue];
+                    if (curAlertAction.sui_handler) curAlertAction.sui_handler(curAlertAction);
+                }];
+                [self.sui_actionSheet showInView:gWindow];
+            }
+            else if (self.style == SUIAlertStyleAlert)
+            {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+                UIAlertView *curAlertView = [[UIAlertView alloc] initWithTitle:self.title
+                                                                       message:self.message
+                                                                      delegate:self
+                                                             cancelButtonTitle:cancelAlertAction.title
+                                                             otherButtonTitles:nil, nil];
+#pragma clang diagnostic pop
+                self.sui_alertView = curAlertView;
+                [curAlertView sui_setAssociatedObject:self key:_cmd policy:OBJC_ASSOCIATION_RETAIN_NONATOMIC];
+                
+                for (SUIAlertAction *cAction in self.sui_actions)
+                {
+                    if (cancelAlertAction == cAction) continue;
+                    [curAlertView addButtonWithTitle:cAction.title];
+                }
+                [curAlertView show];
+            }
+        }
+
+    }
+    
+    {
+        @weakify(self)
+        [[RACObserve(self, title) skip:1] subscribeNext:^(id x) {
+            @strongify(self)
+            if (kAboveIOS8) {
+                self.sui_alertController.title = x;
+            } else if (self.style == SUIAlertStyleActionSheet) {
+                self.sui_actionSheet.title = x;
+            } else if (self.style == SUIAlertStyleAlert) {
+                self.sui_alertView.title = x;
+            }
+        }];
+        
+        [[RACObserve(self, message) skip:1] subscribeNext:^(id x) {
+            @strongify(self)
+            if (kAboveIOS8) {
+                self.sui_alertController.message = x;
+            } else if (self.style == SUIAlertStyleActionSheet) {
+                //
+            } else if (self.style == SUIAlertStyleAlert) {
+                self.sui_alertView.message = x;
+            }
+        }];
+    }
+}
+
+- (NSArray<SUIAlertAction *> *)actions
+{
+    return self.sui_actions;
+}
+
+- (NSMutableArray<SUIAlertAction *> *)sui_actions
+{
+    if (!_sui_actions) {
+        _sui_actions = [NSMutableArray array];
+    }
+    return _sui_actions;
+}
+
+// UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    SUIAlertAction *curAlertAction = self.sui_actions[buttonIndex];
+    if (curAlertAction.sui_handler) curAlertAction.sui_handler(curAlertAction);
+}
+
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+{
+    if (self.sui_alertView.firstOtherButtonIndex > -1)
+    {
+        SUIAlertAction *curAlertAction = self.sui_actions[self.sui_alertView.firstOtherButtonIndex];
+        return curAlertAction.enabled;
+    }
+    return YES;
+}
+
+@end
+
+
+@implementation UIViewController (SUIAlertController)
+
+- (SUIAlertController *)sui_showAlertWithTitle:(NSString *)cTitle
+                                       message:(NSString *)cMessage
+                                         style:(SUIAlertStyle)cStyle
+{
+    SUIAlertController *aAlertController = [SUIAlertController new];
+    aAlertController.sui_vc = self;
+    [aAlertController sui_showAlertWithTitle:cTitle message:cMessage style:cStyle];
+    return aAlertController;
+}
+
+@end
+
+
+/*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
  *  UITableView
  *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
+
+#pragma mark - *** UITableView ***
 
 @implementation UITableView (SUIViewController)
 

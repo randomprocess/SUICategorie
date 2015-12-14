@@ -230,21 +230,14 @@
 {
     if (self.length == 0) return nil;
     
-    static CFStringRef toEscape = CFSTR(":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`");
-    NSString *curStr = (NSString *)CFBridgingRelease
-    (CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                             (CFStringRef)self,
-                                             NULL,
-                                             toEscape,
-                                             kCFStringEncodingUTF8));
+    NSString *curStr = [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     return curStr;
 }
 - (NSString *)sui_URLDecoded
 {
     if (self.length == 0) return nil;
     
-    NSString *deplussed = [self stringByReplacingOccurrencesOfString:@"+" withString:@" "];
-    deplussed = [deplussed stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *deplussed = [self stringByRemovingPercentEncoding];
     return deplussed;
 }
 

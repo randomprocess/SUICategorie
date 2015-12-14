@@ -8,6 +8,7 @@
 
 #import "NSDictionary+SUIAdditions.h"
 #import "NSString+SUIAdditions.h"
+#import "SUIMacros.h"
 
 @implementation NSDictionary (SUIAdditions)
 

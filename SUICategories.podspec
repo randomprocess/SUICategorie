@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 
   s.frameworks = 'UIKit', 'Foundation', 'CoreGraphics', 'QuartzCore'
   s.dependency 'ReactiveCocoa', '~> 2.5'
-  s.dependency 'SUIUtilities', '~> 1.0.1'
+  s.dependency 'SUIUtilities', '~> 1.0.2'
 
   s.subspec 'Foundation' do |ss|
     ss.source_files = 'SUICategories/Foundation/*.{h,m}'

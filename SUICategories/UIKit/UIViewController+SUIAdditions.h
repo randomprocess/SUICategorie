@@ -9,7 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "ReactiveCocoa.h"
 
+@class SUIAlertController;
+
 NS_ASSUME_NONNULL_BEGIN
+
+typedef NS_ENUM(NSInteger, SUIAlertActionStyle) {
+    SUIAlertActionStyleDefault = 0,
+    SUIAlertActionStyleCancel,
+    SUIAlertActionStyleDestructive
+};
+
+typedef NS_ENUM(NSInteger, SUIAlertStyle) {
+    SUIAlertStyleActionSheet = 0,
+    SUIAlertStyleAlert
+};
 
 @interface UIViewController (SUIAdditions)
 
@@ -43,9 +56,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - NavBack
 
-- (IBAction)sui_navPopToLast:(id)sender;
-- (IBAction)sui_navPopToRoot:(id)sender;
-- (IBAction)sui_navDismiss:(id)sender;
+- (IBAction)sui_backToLast:(id)sender;
+- (IBAction)sui_backToRoot:(id)sender;
 
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
@@ -64,8 +76,53 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
+ *  Alert & ActionSheet
+ *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
+
+#pragma mark - *** Alert & ActionSheet ***
+
+@interface SUIAlertAction : NSObject
+
++ (instancetype)actionWithTitle:(nullable NSString *)cTitle
+                          style:(SUIAlertActionStyle)cStyle
+                        handler:(void (^ __nullable)(SUIAlertAction *cAction))cHandler;
+
+@property (nonatomic,readonly) SUIAlertActionStyle style;
+@property (nullable,nonatomic,readonly) NSString *title;
+@property (nonatomic) BOOL enabled;
+
+@end
+
+
+@interface SUIAlertController : NSObject
+
+- (void)addAction:(SUIAlertAction *)cAction;
+@property (nonatomic,readonly) NSArray<SUIAlertAction *> *actions;
+
+@property (nullable, nonatomic, copy) NSString *title;
+@property (nullable, nonatomic, copy) NSString *message;
+
+@property (nonatomic, readonly) SUIAlertStyle style;
+
+- (void)show;
+
+@end
+
+
+@interface UIViewController (SUIAlertController)
+
+- (SUIAlertController *)sui_showAlertWithTitle:(nullable NSString *)cTitle
+                                       message:(nullable NSString *)cMessage
+                                         style:(SUIAlertStyle)cStyle;
+
+@end
+
+
+/*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
  *  UITableView
  *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
+
+#pragma mark - *** UITableView ***
 
 @interface UITableView (SUIViewController)
 

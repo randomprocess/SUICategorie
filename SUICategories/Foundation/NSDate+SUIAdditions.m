@@ -23,37 +23,37 @@
 
 - (NSInteger)sui_year
 {
-    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:self];
+    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:self];
     NSInteger curYear = [dateComponents year];
     return curYear;
 }
 - (NSInteger)sui_month
 {
-    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSMonthCalendarUnit fromDate:self];
+    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitMonth fromDate:self];
     NSInteger curMonth = [dateComponents month];
     return curMonth;
 }
 - (NSInteger)sui_day
 {
-    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:self];
+    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:self];
     NSInteger curDay = [dateComponents day];
     return curDay;
 }
 - (NSInteger)sui_hour
 {
-    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:self];
+    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitHour fromDate:self];
     NSInteger curHour = [dateComponents hour];
     return curHour;
 }
 - (NSInteger)sui_minute
 {
-    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSMinuteCalendarUnit fromDate:self];
+    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitMinute fromDate:self];
     NSInteger curMinute = [dateComponents minute];
     return curMinute;
 }
 - (NSInteger)sui_second
 {
-    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSSecondCalendarUnit fromDate:self];
+    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitSecond fromDate:self];
     NSInteger curSecond = [dateComponents second];
     return curSecond;
 }

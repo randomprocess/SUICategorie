@@ -140,7 +140,7 @@ static NSString *const kSutString2 = @"  \n  \n\n A collection of \n  useful Obj
 
 - (void)testURLEncoded
 {
-    XCTAssertEqualObjects([self.sutString1 sui_URLEncoded], @"https%3A%2F%2Fgithub.com%2Frandomprocess%2FSUICategories");
+    XCTAssertEqualObjects([self.sutString1 sui_URLEncoded], @"https://github.com/randomprocess/SUICategories");
 }
 - (void)testURLDecoded
 {
