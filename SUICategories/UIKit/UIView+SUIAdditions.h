@@ -31,11 +31,11 @@ typedef enum : NSUInteger {
 #pragma mark border
 
 @property (nonatomic) IBInspectable CGFloat sui_borderWidth; // Defaults to zero. [0,1]
-@property (nullable,nonatomic,strong) IBInspectable UIColor *sui_borderColor; // Defaults to opaque black.
+@property (nullable,nonatomic,copy) IBInspectable UIColor *sui_borderColor; // Defaults to opaque black.
 
 #pragma mark shadow
 
-@property (nullable,nonatomic,strong) IBInspectable UIColor *sui_shadowColor; // Defaults to opaque black
+@property (nullable,nonatomic,copy) IBInspectable UIColor *sui_shadowColor; // Defaults to opaque black
 @property (nonatomic) IBInspectable CGFloat sui_shadowOpacity; // Defaults to 0. [0,1]
 @property (nonatomic) IBInspectable CGSize sui_shadowOffset; // Defaults to (0, -3).
 @property (nonatomic) IBInspectable CGFloat sui_shadowRadius; // Defaults to 3.

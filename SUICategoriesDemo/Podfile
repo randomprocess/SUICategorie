@@ -1,5 +1,5 @@
 
-pod 'SUIUtilities', '~> 1.0.1'
+pod 'SUIUtilities', '~> 1.0.3'
 
 pod 'ReactiveCocoa', '~> 2.5', :inhibit_warnings => true
 

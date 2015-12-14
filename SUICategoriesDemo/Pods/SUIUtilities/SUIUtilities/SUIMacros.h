@@ -46,8 +46,11 @@
 #define kHant ([kLanguage rangeOfString:@"^(zh-Hant|zh-HK|zh-TW).*$" options:NSRegularExpressionSearch].location != NSNotFound)
 #define kHansOrHant (kHans || kHant)
 
-#define kDocument [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
-#define kDocumentURL [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]
+#define kPathOfDocument [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
+#define kURLOfDocument [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]
+
+#define kPathOfTmp NSTemporaryDirectory()
+#define kPathOfHome NSHomeDirectory()
 
 #define kOpenRemoteNoti ((kAboveIOS8) ? [[UIApplication sharedApplication] isRegisteredForRemoteNotifications] : ([[UIApplication sharedApplication] enabledRemoteNotificationTypes] ? YES : NO))
 
@@ -92,14 +95,16 @@ NSString *hexString = [__hex stringByReplacingOccurrencesOfString:@"#" withStrin
 
 #define gClassName(__obj) [NSString stringWithUTF8String:object_getClassName(__obj)]
 
-#define gLocalized(__string) NSLocalizedString(__string, nil)
+#define gLocalString(__string) NSLocalizedString(__string, nil)
+#define gLocalStringFromTable(__string, __fileName) NSLocalizedStringFromTable(__string, __fileName, nil)
 
 #define gWindow ((UIWindow *)[[[UIApplication sharedApplication] windows] objectAtIndex:0])
 
 #define gMainStoryboard [UIStoryboard storyboardWithName:@"Main" bundle:nil]
-#define gViewControllerInstantiate(__storyboardId) [gMainStoryboard instantiateViewControllerWithIdentifier:__storyboardId]
+#define gStoryboardNamed(__name) [UIStoryboard storyboardWithName:__name bundle:nil]
+#define gStoryboardInstantiate(__name, __storyboardId) [gStoryboardNamed:(__name) instantiateViewControllerWithIdentifier:__storyboardId]
 
-#define gRandomInRange(__startIndex, __endIndex) (int)(arc4random_uniform(__endIndex-__startIndex+1) + __startIndex) // __startIndex ~ __endIndex
+#define gRandomInRange(__startIndex, __endIndex) (int)(arc4random_uniform((u_int32_t)(__endIndex-__startIndex+1)) + __startIndex) // __startIndex ~ __endIndex
 
 #define gAdapt(__length) round( kScreenWidth / 320.0 * __length )
 #define gDegree(__para) __para*M_PI/180.0
@@ -170,7 +175,7 @@ __stuff \
 #ifndef __OPTIMIZE__
 
 #define NSLog(...)                  NSLog(__VA_ARGS__);
-#define uFun                        NSLog((uXCODE_COLORS_ESCAPE @"fg89,89,207;" @"%s <%d>" uXCODE_COLORS_RESET), __PRETTY_FUNCTION__, __LINE__);
+#define uFun                        NSLog((uXCODE_COLORS_ESCAPE @"fg217,56,41;" @"%s <%d>" uXCODE_COLORS_RESET), __PRETTY_FUNCTION__, __LINE__);
 #define uLog(__format, ...)         NSLog((uXCODE_COLORS_ESCAPE @"fg0,178,238;" @"%s <%d>\n-> " __format uXCODE_COLORS_RESET), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 #define uLogInfo(__format, ...)     NSLog((uXCODE_COLORS_ESCAPE @"fg0,168,0;" @"- " __format uXCODE_COLORS_RESET), ##__VA_ARGS__);
 #define uLogError(__format, ...)    NSLog((uXCODE_COLORS_ESCAPE @"fg255,41,105;" @"# " __format uXCODE_COLORS_RESET), ##__VA_ARGS__);

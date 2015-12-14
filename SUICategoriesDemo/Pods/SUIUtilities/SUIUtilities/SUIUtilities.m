@@ -7,6 +7,7 @@
 //
 
 #import "SUIUtilities.h"
+#import <UIKit/UIKit.h>
 
 NSString *const sui_everLaunched = @"sui_everLaunched";
 NSString *const sui_everVersion = @"sui_everVersion";

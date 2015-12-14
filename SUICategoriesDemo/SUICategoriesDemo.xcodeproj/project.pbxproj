@@ -34,6 +34,7 @@
 		6DC677BE1C0FD50100B74832 /* UIScrollView+SUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC677B41C0FD50100B74832 /* UIScrollView+SUIAdditions.m */; settings = {ASSET_TAGS = (); }; };
 		6DC677BF1C0FD50100B74832 /* UIView+SUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC677B61C0FD50100B74832 /* UIView+SUIAdditions.m */; settings = {ASSET_TAGS = (); }; };
 		6DC677C01C0FD50100B74832 /* UIViewController+SUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC677B81C0FD50100B74832 /* UIViewController+SUIAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		6DC8D36B1C1E8D7100BEF286 /* UITabBarItem+SUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC8D36A1C1E8D7100BEF286 /* UITabBarItem+SUIAdditions.m */; settings = {ASSET_TAGS = (); }; };
 		A176C52166D9D7CEF08D04FD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A3012C272354A9B330FFC85 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,8 @@
 		6DC677B71C0FD50100B74832 /* UIViewController+SUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SUIAdditions.h"; sourceTree = "<group>"; };
 		6DC677B81C0FD50100B74832 /* UIViewController+SUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SUIAdditions.m"; sourceTree = "<group>"; };
 		6DC677C11C0FD58100B74832 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		6DC8D3691C1E8D7100BEF286 /* UITabBarItem+SUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarItem+SUIAdditions.h"; sourceTree = "<group>"; };
+		6DC8D36A1C1E8D7100BEF286 /* UITabBarItem+SUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarItem+SUIAdditions.m"; sourceTree = "<group>"; };
 		861CE99FAE084309EA1BC71E /* Pods-SUICategoriesDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUICategoriesDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SUICategoriesDemoTests/Pods-SUICategoriesDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		9194FB111258F1E899C77558 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A7A68BA8D6AB993670845238 /* Pods-SUICategoriesDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUICategoriesDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SUICategoriesDemoTests/Pods-SUICategoriesDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -245,6 +248,8 @@
 				6DC677B01C0FD50100B74832 /* UIControl+SUIAdditions.m */,
 				6DC677B11C0FD50100B74832 /* UINavigationController+SUIAdditions.h */,
 				6DC677B21C0FD50100B74832 /* UINavigationController+SUIAdditions.m */,
+				6DC8D3691C1E8D7100BEF286 /* UITabBarItem+SUIAdditions.h */,
+				6DC8D36A1C1E8D7100BEF286 /* UITabBarItem+SUIAdditions.m */,
 				6DC677B31C0FD50100B74832 /* UIScrollView+SUIAdditions.h */,
 				6DC677B41C0FD50100B74832 /* UIScrollView+SUIAdditions.m */,
 				6DC677B51C0FD50100B74832 /* UIView+SUIAdditions.h */,
@@ -515,6 +520,7 @@
 				6D6B30101C1674C400CD8235 /* NSObject+SUIAdditions.m in Sources */,
 				6D3325D51C196991004BE46E /* NSDate+SUIAdditions.m in Sources */,
 				6DC677BD1C0FD50100B74832 /* UINavigationController+SUIAdditions.m in Sources */,
+				6DC8D36B1C1E8D7100BEF286 /* UITabBarItem+SUIAdditions.m in Sources */,
 				6DC677BE1C0FD50100B74832 /* UIScrollView+SUIAdditions.m in Sources */,
 				6DC677BF1C0FD50100B74832 /* UIView+SUIAdditions.m in Sources */,
 				6D3325C61C193548004BE46E /* NSArray+SUIAdditions.m in Sources */,

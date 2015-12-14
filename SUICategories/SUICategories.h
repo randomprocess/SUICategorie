@@ -30,6 +30,7 @@
 #import "UIButton+SUIAdditions.h"
 #import "UIControl+SUIAdditions.h"
 #import "UINavigationController+SUIAdditions.h"
+#import "UITabBarItem+SUIAdditions.h"
 #import "UIScrollView+SUIAdditions.h"
 #import "UIView+SUIAdditions.h"
 #import "UIViewController+SUIAdditions.h"
