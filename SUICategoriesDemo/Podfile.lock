@@ -7,16 +7,16 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SUIUtilities (1.0.3)
+  - SUIUtilities (1.0.4)
 
 DEPENDENCIES:
   - OCMock (~> 3.2)
   - ReactiveCocoa (~> 2.5)
-  - SUIUtilities (~> 1.0.3)
+  - SUIUtilities (~> 1.0.4)
 
 SPEC CHECKSUMS:
   OCMock: 28def049ef47f996b515a8eeea958be7ccab2dbb
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SUIUtilities: 794ff901d1f172ae8e2645772e8706868d780113
+  SUIUtilities: 67fe196de52211971eec999173c465c84561458e
 
 COCOAPODS: 0.39.0

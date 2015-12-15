@@ -24,6 +24,11 @@ typedef NS_ENUM(NSInteger, SUIAlertStyle) {
     SUIAlertStyleAlert
 };
 
+typedef NS_ENUM(NSInteger, SUISegueType) {
+    SUISegueTypePush = 0,
+    SUISegueTypeModal
+};
+
 @interface UIViewController (SUIAdditions)
 
 
@@ -70,6 +75,17 @@ typedef NS_ENUM(NSInteger, SUIAlertStyle) {
 @property (nullable,nonatomic,strong) RACSignal *sui_sourceSignal;
 
 - (void)sui_signalPassed:(RACSignal *(^)(__kindof UIViewController *destVC))cb;
+
+
+/*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
+ *  StoryboardLink
+ *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
+
+#pragma mark - StoryboardLink
+
+- (void)sui_storyboardSegueWithIdentifier:(NSString *)cIdentifier;
+- (void)sui_storyboardInstantiate:(NSString *)cName storyboardID:(NSString *)cID;
+- (void)sui_storyboardInstantiate:(NSString *)cName storyboardID:(NSString *)cID segueType:(SUISegueType)cType;
 
 
 @end

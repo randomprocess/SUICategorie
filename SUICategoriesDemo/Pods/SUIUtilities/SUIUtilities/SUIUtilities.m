@@ -96,12 +96,12 @@ NSString *const sui_everVersion = @"sui_everVersion";
 
 #pragma mark - Launched
 
-+ (SUILaunchedType)sui_launchedType
++ (SUILaunchedType)launchedType
 {
     return [[self sharedInstance] launchedType];
 }
 
-+ (nullable NSString *)sui_previousVersion
++ (NSString *)previousVersion
 {
     return [[self sharedInstance] previousVersion];
 }
@@ -109,9 +109,9 @@ NSString *const sui_everVersion = @"sui_everVersion";
 
 #pragma mark - File manager
 
-+ (BOOL)sui_fileCreateDirectory:(NSString *)filePath
++ (BOOL)fileCreateDirectory:(NSString *)filePath
 {
-    if (![self sui_fileExist:filePath])
+    if (![self fileExist:filePath])
     {
         NSError *anyError = nil;
         BOOL ret = [[NSFileManager defaultManager]
@@ -129,13 +129,13 @@ NSString *const sui_everVersion = @"sui_everVersion";
     return YES;
 }
 
-+ (BOOL)sui_fileExist:(NSString *)filePath
++ (BOOL)fileExist:(NSString *)filePath
 {
     BOOL ret = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
     return ret;
 }
 
-+ (BOOL)sui_fileWrite:(NSData *)data toPath:(NSString *)filePath
++ (BOOL)fileWrite:(NSData *)data toPath:(NSString *)filePath
 {
     NSError *anyError = nil;
     BOOL ret = [data writeToFile:filePath
@@ -149,7 +149,7 @@ NSString *const sui_everVersion = @"sui_everVersion";
     return ret;
 }
 
-+ (BOOL)sui_fileMove:(NSString *)sourcePath toPath:(NSString *)filePath
++ (BOOL)fileMove:(NSString *)sourcePath toPath:(NSString *)filePath
 {
     NSError *anyError = nil;
     BOOL ret = [[NSFileManager defaultManager]
@@ -164,7 +164,7 @@ NSString *const sui_everVersion = @"sui_everVersion";
     return ret;
 }
 
-+ (BOOL)sui_fileCopy:(NSString *)sourcePath toPath:(NSString *)filePath
++ (BOOL)fileCopy:(NSString *)sourcePath toPath:(NSString *)filePath
 {
     NSError *anyError = nil;
     BOOL ret = [[NSFileManager defaultManager]
@@ -179,7 +179,7 @@ NSString *const sui_everVersion = @"sui_everVersion";
     return ret;
 }
 
-+ (NSData *)sui_fileRead:(NSString *)filePath
++ (NSData *)fileRead:(NSString *)filePath
 {
     NSError *anyError = nil;
     NSData *readData = [NSData dataWithContentsOfFile:filePath
@@ -193,9 +193,9 @@ NSString *const sui_everVersion = @"sui_everVersion";
     return readData;
 }
 
-+ (NSUInteger)sui_fileSize:(NSString *)filePath
++ (NSUInteger)fileSize:(NSString *)filePath
 {
-    if ([self sui_fileExist:filePath])
+    if ([self fileExist:filePath])
     {
         NSError *anyError = nil;
         NSDictionary *attributes = [[NSFileManager defaultManager]
@@ -212,9 +212,9 @@ NSString *const sui_everVersion = @"sui_everVersion";
     return 0;
 }
 
-+ (BOOL)sui_fileDelete:(NSString *)filePath
++ (BOOL)fileDelete:(NSString *)filePath
 {
-    if ([self sui_fileExist:filePath])
+    if ([self fileExist:filePath])
     {
         NSError *anyError = nil;
         BOOL ret = [[NSFileManager defaultManager]
@@ -233,7 +233,7 @@ NSString *const sui_everVersion = @"sui_everVersion";
 
 #pragma mark - Unique identifier
 
-+ (NSString *)sui_uuidString
++ (NSString *)uuidString
 {
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
     NSString *curUUID = (__bridge_transfer NSString*)
@@ -244,7 +244,7 @@ NSString *const sui_everVersion = @"sui_everVersion";
     return currUUID;
 }
 
-+ (NSString *)sui_idfvString
++ (NSString *)idfvString
 {
     NSString *curIdfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     NSString *currIdfv = [[curIdfv lowercaseString] stringByReplacingOccurrencesOfString:@"-" withString:@""];
@@ -255,7 +255,7 @@ NSString *const sui_everVersion = @"sui_everVersion";
 
 #pragma mark - Camera & PhotoLibrary
 
-+ (BOOL)sui_cameraAvailable
++ (BOOL)cameraAvailable
 {
     BOOL ret = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
     if (ret) {
@@ -266,7 +266,7 @@ NSString *const sui_everVersion = @"sui_everVersion";
     return ret;
 }
 
-+ (BOOL)sui_cameraRearAvailable
++ (BOOL)cameraRearAvailable
 {
     BOOL ret = [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
     if (ret) {
@@ -277,7 +277,7 @@ NSString *const sui_everVersion = @"sui_everVersion";
     return ret;
 }
 
-+ (BOOL)sui_cameraFrontAvailable
++ (BOOL)cameraFrontAvailable
 {
     BOOL ret = [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront];
     if (ret) {
@@ -288,7 +288,7 @@ NSString *const sui_everVersion = @"sui_everVersion";
     return ret;
 }
 
-+ (BOOL)sui_photoLibraryAvailable
++ (BOOL)photoLibraryAvailable
 {
     BOOL ret = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary];
     if (ret) {
@@ -302,7 +302,7 @@ NSString *const sui_everVersion = @"sui_everVersion";
 
 #pragma mark - Others
 
-+ (BOOL)sui_toAppStore:(NSString *)appId
++ (BOOL)toAppStore:(NSString *)appId
 {
     NSString *curURL = gFormat(@"itms-apps://itunes.apple.com/app/id%@", appId);
     BOOL ret = [[UIApplication sharedApplication] openURL:[NSURL URLWithString:curURL]];
@@ -314,7 +314,7 @@ NSString *const sui_everVersion = @"sui_everVersion";
     return ret;
 }
 
-+ (SUIUtilitiesDelayTask)sui_delay:(NSTimeInterval)delay cb:(void (^)(void))completion;
++ (SUIUtilitiesDelayTask)delay:(NSTimeInterval)delay cb:(void (^)(void))completion;
 {
     __block dispatch_block_t closure = completion;
     __block SUIUtilitiesDelayTask currTask = nil;
@@ -335,7 +335,7 @@ NSString *const sui_everVersion = @"sui_everVersion";
     return currTask;
 }
 
-+ (void)sui_cancelDelayTask:(SUIUtilitiesDelayTask)cTask
++ (void)cancelDelayTask:(SUIUtilitiesDelayTask)cTask
 {
     if (cTask) cTask(YES);
 }

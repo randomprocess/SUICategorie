@@ -29,9 +29,9 @@ typedef void (^SUIUtilitiesDelayTask)(BOOL cancel);
 
 #pragma mark - Launched
 
-+ (SUILaunchedType)sui_launchedType;
++ (SUILaunchedType)launchedType;
 
-+ (nullable NSString *)sui_previousVersion;
++ (nullable NSString *)previousVersion;
 
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
@@ -40,21 +40,21 @@ typedef void (^SUIUtilitiesDelayTask)(BOOL cancel);
 
 #pragma mark - File manager
 
-+ (BOOL)sui_fileCreateDirectory:(NSString *)filePath;
++ (BOOL)fileCreateDirectory:(NSString *)filePath;
 
-+ (BOOL)sui_fileExist:(NSString *)filePath;
++ (BOOL)fileExist:(NSString *)filePath;
 
-+ (BOOL)sui_fileWrite:(NSData *)data toPath:(NSString *)filePath;
++ (BOOL)fileWrite:(NSData *)data toPath:(NSString *)filePath;
 
-+ (BOOL)sui_fileMove:(NSString *)sourcePath toPath:(NSString *)filePath;
++ (BOOL)fileMove:(NSString *)sourcePath toPath:(NSString *)filePath;
 
-+ (BOOL)sui_fileCopy:(NSString *)sourcePath toPath:(NSString *)filePath;
++ (BOOL)fileCopy:(NSString *)sourcePath toPath:(NSString *)filePath;
 
-+ (NSData *)sui_fileRead:(NSString *)filePath;
++ (NSData *)fileRead:(NSString *)filePath;
 
-+ (NSUInteger)sui_fileSize:(NSString *)filePath;
++ (NSUInteger)fileSize:(NSString *)filePath;
 
-+ (BOOL)sui_fileDelete:(NSString *)filePath;
++ (BOOL)fileDelete:(NSString *)filePath;
 
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
@@ -63,9 +63,9 @@ typedef void (^SUIUtilitiesDelayTask)(BOOL cancel);
 
 #pragma mark - Unique identifier
 
-+ (NSString *)sui_uuidString;
++ (NSString *)uuidString;
 
-+ (NSString *)sui_idfvString;
++ (NSString *)idfvString;
 
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
@@ -74,13 +74,13 @@ typedef void (^SUIUtilitiesDelayTask)(BOOL cancel);
 
 #pragma mark - Camera & PhotoLibrary
 
-+ (BOOL)sui_cameraAvailable;
++ (BOOL)cameraAvailable;
 
-+ (BOOL)sui_cameraRearAvailable;
++ (BOOL)cameraRearAvailable;
 
-+ (BOOL)sui_cameraFrontAvailable;
++ (BOOL)cameraFrontAvailable;
 
-+ (BOOL)sui_photoLibraryAvailable;
++ (BOOL)photoLibraryAvailable;
 
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
@@ -89,11 +89,11 @@ typedef void (^SUIUtilitiesDelayTask)(BOOL cancel);
 
 #pragma mark - Others
 
-+ (BOOL)sui_toAppStore:(NSString *)appId;
++ (BOOL)toAppStore:(NSString *)appId;
 
-+ (SUIUtilitiesDelayTask)sui_delay:(NSTimeInterval)delay cb:(void (^)(void))completion;
++ (SUIUtilitiesDelayTask)delay:(NSTimeInterval)delay cb:(void (^)(void))completion;
 
-+ (void)sui_cancelDelayTask:(SUIUtilitiesDelayTask)cTask;
++ (void)cancelDelayTask:(SUIUtilitiesDelayTask)cTask;
 
 @end
 

@@ -38,13 +38,10 @@
     uFloat(self.sui_translucentTabBarHeight);
 
     uRect(self.sui_viewFrame);
-
-    uFun;
-    
-#pragma mark - *** Alert & ActionSheet ***
-    
-    [self showAlertStyle];
 }
+
+
+#pragma mark - *** Alert & ActionSheet ***
 
 - (void)showAlertStyle
 {
@@ -52,12 +49,15 @@
                                                                   message:@"aMessage"
                                                                     style:SUIAlertStyleAlert];
     [curAlertController addAction:
-     [SUIAlertAction actionWithTitle:@"取消" style:SUIAlertActionStyleCancel handler:nil]];
+     [SUIAlertAction actionWithTitle:@"取消" style:SUIAlertActionStyleCancel handler:^(SUIAlertAction * _Nonnull cAction) {
+        uLog(@"Alert Cancel");
+    }]];
     
     uWeakSelf
     [curAlertController addAction:
      [SUIAlertAction actionWithTitle:@"确定" style:SUIAlertActionStyleDestructive handler:^(SUIAlertAction * _Nonnull cAction) {
-        [weakSelf showActionSheetStyle];
+        uLog(@"Alert1");
+        [weakSelf modelPassed];
     }]];
     
     [curAlertController show];
@@ -72,7 +72,7 @@
                                                                     style:SUIAlertStyleActionSheet];
     [curAlertController addAction:
      [SUIAlertAction actionWithTitle:@"取消" style:SUIAlertActionStyleCancel handler:^(SUIAlertAction * _Nonnull cAction) {
-        uLog(@"Cancel");
+        uLog(@"Sheet Cancel");
     }]];
     
     [curAlertController addAction:
@@ -96,9 +96,6 @@
     [curAlertController show];
 }
 
-
-#pragma mark - ModelPassed
-
 - (void)modelPassed
 {
     [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull destVC) {
@@ -106,8 +103,8 @@
         if ([destVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
         {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                [subscriber sendNext:@"Action10"];
-                [subscriber sendNext:@"Action11"];
+                [subscriber sendNext:@"AlertController10"];
+                [subscriber sendNext:@"AlertController11"];
                 [subscriber sendCompleted];
                 return nil;
             }];
@@ -115,7 +112,175 @@
         return nil;
     }];
     
-    [self performSegueWithIdentifier:@"ViewControllerSecond" sender:self];
+    [self performSegueWithIdentifier:@"SecondPush" sender:self];
+}
+
+
+#pragma mark - StoryboardLink
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section)
+    {
+        case 0:
+        {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    [self showAlertStyle];
+                }
+                    break;
+                case 1:
+                {
+                    [self showActionSheetStyle];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+            break;
+            
+        case 1:
+        {
+            switch (indexPath.row)
+            {
+                case 0:
+                {
+                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull destVC) {
+                        
+                        if ([destVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
+                        {
+                            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                                [subscriber sendNext:@"Segue"];
+                                [subscriber sendNext:@"Push"];
+                                [subscriber sendCompleted];
+                                return nil;
+                            }];
+                        }
+                        return nil;
+                    }];
+                    
+                    [self sui_storyboardSegueWithIdentifier:@"SecondPush"];
+                }
+                    break;
+                case 1:
+                {
+                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull destVC) {
+                        
+                        if ([destVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
+                        {
+                            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                                [subscriber sendNext:@"Segue"];
+                                [subscriber sendNext:@"Modal"];
+                                [subscriber sendCompleted];
+                                return nil;
+                            }];
+                        }
+                        return nil;
+                    }];
+                    
+                    // need to use prepareForSegue()
+                    
+                    [self sui_storyboardSegueWithIdentifier:@"SecondModal"];
+                }
+                    break;
+                case 2:
+                {
+                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull destVC) {
+                        
+                        if ([destVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
+                        {
+                            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                                [subscriber sendNext:@"Instantiate VC"];
+                                [subscriber sendNext:@"Push"];
+                                [subscriber sendCompleted];
+                                return nil;
+                            }];
+                        }
+                        return nil;
+                    }];
+                    
+                    [self sui_storyboardInstantiate:@"SUIViewController" storyboardID:@"ViewControllerSecond"];
+                }
+                    break;
+                case 3:
+                {
+                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull destVC) {
+                        
+                        if ([destVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
+                        {
+                            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                                [subscriber sendNext:@"Instantiate VC"];
+                                [subscriber sendNext:@"Modal"];
+                                [subscriber sendCompleted];
+                                return nil;
+                            }];
+                        }
+                        return nil;
+                    }];
+                    
+                    [self sui_storyboardInstantiate:@"SUIViewController" storyboardID:@"ViewControllerSecond" segueType:SUISegueTypeModal];
+                }
+                    break;
+                    
+                case 4:
+                {
+                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull destVC) {
+                        
+                        if ([destVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
+                        {
+                            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                                [subscriber sendNext:@"Instantiate Nav"];
+                                [subscriber sendNext:@"Push"];
+                                [subscriber sendCompleted];
+                                return nil;
+                            }];
+                        }
+                        return nil;
+                    }];
+                    
+                    [self sui_storyboardInstantiate:@"SUIViewController" storyboardID:@"ViewControllerNav" segueType:SUISegueTypePush];
+                }
+                    break;
+                    
+                case 5:
+                {
+                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull destVC) {
+                        
+                        if ([destVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
+                        {
+                            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                                [subscriber sendNext:@"Instantiate Nav"];
+                                [subscriber sendNext:@"Modal"];
+                                [subscriber sendCompleted];
+                                return nil;
+                            }];
+                        }
+                        return nil;
+                    }];
+                    
+                    [self sui_storyboardInstantiate:@"SUIViewController" storyboardID:@"ViewControllerNav" segueType:SUISegueTypeModal];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"SecondModal"])
+    {
+        segue.destinationViewController.sui_sourceVC = segue.sourceViewController;
+    }
 }
 
 

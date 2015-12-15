@@ -102,7 +102,7 @@ NSString *hexString = [__hex stringByReplacingOccurrencesOfString:@"#" withStrin
 
 #define gMainStoryboard [UIStoryboard storyboardWithName:@"Main" bundle:nil]
 #define gStoryboardNamed(__name) [UIStoryboard storyboardWithName:__name bundle:nil]
-#define gStoryboardInstantiate(__name, __storyboardId) [gStoryboardNamed:(__name) instantiateViewControllerWithIdentifier:__storyboardId]
+#define gStoryboardInstantiate(__name, __storyboardId) [gStoryboardNamed(__name) instantiateViewControllerWithIdentifier:__storyboardId]
 
 #define gRandomInRange(__startIndex, __endIndex) (int)(arc4random_uniform((u_int32_t)(__endIndex-__startIndex+1)) + __startIndex) // __startIndex ~ __endIndex
 

@@ -76,61 +76,12 @@
                     </navigationBar>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="sui_setup" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="sui_storyboardName" value="SUIViewController"/>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <segue destination="XUk-KG-UuV" kind="relationship" relationship="rootViewController" id="lLS-uF-UeJ"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gtm-JV-xZJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="930.5" y="1662.5"/>
-        </scene>
-        <!--ViewControllerRoot-->
-        <scene sceneID="RxR-ch-tO4">
-            <objects>
-                <viewController id="XUk-KG-UuV" customClass="SUIViewControllerRootVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="HJD-VQ-Tqu"/>
-                        <viewControllerLayoutGuide type="bottom" id="eLF-IV-fnd"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="9UP-li-eWj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="ViewControllerRoot" id="FWg-dM-E8b">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="zWl-5L-RPP">
-                            <connections>
-                                <action selector="sui_backToLast:" destination="XUk-KG-UuV" id="Kre-6K-3FA"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="Gci-15-jsd" kind="show" identifier="ViewControllerSecond" id="AAT-ZS-pD7"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9iz-h2-Lcc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1568.5" y="1662.5"/>
-        </scene>
-        <!--ViewControllerSecond-->
-        <scene sceneID="jTy-NV-M7o">
-            <objects>
-                <viewController id="Gci-15-jsd" customClass="SUIViewControllerSecondVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="DHC-vo-aWB"/>
-                        <viewControllerLayoutGuide type="bottom" id="9ho-wt-R2w"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3g2-om-Fp2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="ViewControllerSecond" id="oIF-A4-A9e"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ej-Ac-Kwb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2192.5" y="1662.5"/>
         </scene>
     </scenes>
 </document>

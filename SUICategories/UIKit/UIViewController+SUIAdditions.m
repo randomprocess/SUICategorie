@@ -188,6 +188,38 @@
 }
 
 
+/*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
+ *  StoryboardLink
+ *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
+
+#pragma mark - StoryboardLink
+
+- (void)sui_storyboardSegueWithIdentifier:(NSString *)cIdentifier
+{
+    [self performSegueWithIdentifier:cIdentifier sender:self];
+}
+- (void)sui_storyboardInstantiate:(NSString *)cName storyboardID:(NSString *)cID
+{
+    [self sui_storyboardInstantiate:cName storyboardID:cID segueType:SUISegueTypePush];
+}
+- (void)sui_storyboardInstantiate:(NSString *)cName storyboardID:(NSString *)cID segueType:(SUISegueType)cType
+{
+    UIViewController *curVC = gStoryboardInstantiate(cName, cID);
+    if ([curVC isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *curNav = (UINavigationController *)curVC;
+        curNav.topViewController.sui_sourceVC = self;
+        [self presentViewController:curVC animated:YES completion:nil];
+    } else {
+        if (cType == SUISegueTypePush) {
+            [self.navigationController pushViewController:curVC animated:YES];
+        } else {
+            curVC.sui_sourceVC = self;
+            [self presentViewController:curVC animated:YES completion:nil];
+        }
+    }
+}
+
+
 @end
 
 

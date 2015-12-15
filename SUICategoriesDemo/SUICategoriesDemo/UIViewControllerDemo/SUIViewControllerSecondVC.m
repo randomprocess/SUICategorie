@@ -11,6 +11,9 @@
 
 @interface SUIViewControllerSecondVC ()
 
+@property (weak, nonatomic) IBOutlet UILabel *lbl1;
+@property (weak, nonatomic) IBOutlet UILabel *lbl2;
+
 @end
 
 @implementation SUIViewControllerSecondVC
@@ -20,10 +23,11 @@
 {
     [super viewDidLoad];
     
-    [self.sui_sourceSignal subscribeNext:^(id x) {
-        uObj(x);
-    } completed:^{
-        uFun
+    RAC(self.lbl1, text) = [[self.sui_sourceSignal take:1] distinctUntilChanged];
+    RAC(self.lbl2, text) = [[[self.sui_sourceSignal skip:1] take:1] distinctUntilChanged];
+
+    [self.sui_sourceSignal subscribeCompleted:^{
+        uFun;
     }];
 }
 
