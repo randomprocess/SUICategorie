@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable,readonly,copy) NSData *sui_toData;
 @property (nullable,readonly,copy) NSURL *sui_toURL;
+@property (nullable,readonly,copy) NSURLRequest *sui_toURLRequest;
 
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
@@ -84,6 +85,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable NSString *)sui_md5Digest;
 - (nullable NSString *)sui_HMACDigestWithKey:(NSString *)cKey algorithm:(CCHmacAlgorithm)cAlgorithm;
+
+#pragma mark Rc4
+
+- (nullable NSData *)sui_rc4WithKey:(NSString *)cKey;
 
 
 @end

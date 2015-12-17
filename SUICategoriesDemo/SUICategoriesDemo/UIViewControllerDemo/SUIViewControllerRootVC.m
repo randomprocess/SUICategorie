@@ -8,6 +8,7 @@
 
 #import "SUIViewControllerRootVC.h"
 #import "UIViewController+SUIAdditions.h"
+#import "SUIUtilities.h"
 
 @implementation SUIViewControllerRootVC
 
@@ -98,13 +99,12 @@
 
 - (void)modelPassed
 {
-    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull destVC) {
+    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull cDestVC) {
         
-        if ([destVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
+        if ([cDestVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
         {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                [subscriber sendNext:@"AlertController10"];
-                [subscriber sendNext:@"AlertController11"];
+                [subscriber sendNext:[RACTuple tupleWithObjectsFromArray:@[@"AlertController10", @"AlertController11"]]];
                 [subscriber sendCompleted];
                 return nil;
             }];
@@ -147,13 +147,12 @@
             {
                 case 0:
                 {
-                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull destVC) {
+                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull cDestVC) {
                         
-                        if ([destVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
+                        if ([cDestVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
                         {
                             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                                [subscriber sendNext:@"Segue"];
-                                [subscriber sendNext:@"Push"];
+                                [subscriber sendNext:[RACTuple tupleWithObjectsFromArray:@[@"Segue", @"Push"]]];
                                 [subscriber sendCompleted];
                                 return nil;
                             }];
@@ -166,13 +165,12 @@
                     break;
                 case 1:
                 {
-                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull destVC) {
+                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull cDestVC) {
                         
-                        if ([destVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
+                        if ([cDestVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
                         {
                             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                                [subscriber sendNext:@"Segue"];
-                                [subscriber sendNext:@"Modal"];
+                                [subscriber sendNext:[RACTuple tupleWithObjectsFromArray:@[@"Segue", @"Modal"]]];
                                 [subscriber sendCompleted];
                                 return nil;
                             }];
@@ -187,13 +185,12 @@
                     break;
                 case 2:
                 {
-                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull destVC) {
+                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull cDestVC) {
                         
-                        if ([destVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
+                        if ([cDestVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
                         {
                             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                                [subscriber sendNext:@"Instantiate VC"];
-                                [subscriber sendNext:@"Push"];
+                                [subscriber sendNext:[RACTuple tupleWithObjectsFromArray:@[@"Instantiate VC", @"Push"]]];
                                 [subscriber sendCompleted];
                                 return nil;
                             }];
@@ -206,13 +203,12 @@
                     break;
                 case 3:
                 {
-                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull destVC) {
+                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull cDestVC) {
                         
-                        if ([destVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
+                        if ([cDestVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
                         {
                             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                                [subscriber sendNext:@"Instantiate VC"];
-                                [subscriber sendNext:@"Modal"];
+                                [subscriber sendNext:[RACTuple tupleWithObjectsFromArray:@[@"Instantiate VC", @"Modal"]]];
                                 [subscriber sendCompleted];
                                 return nil;
                             }];
@@ -226,13 +222,12 @@
                     
                 case 4:
                 {
-                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull destVC) {
+                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull cDestVC) {
                         
-                        if ([destVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
+                        if ([cDestVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
                         {
                             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                                [subscriber sendNext:@"Instantiate Nav"];
-                                [subscriber sendNext:@"Push"];
+                                [subscriber sendNext:[RACTuple tupleWithObjectsFromArray:@[@"Instantiate Nav", @"Push"]]];
                                 [subscriber sendCompleted];
                                 return nil;
                             }];
@@ -246,13 +241,12 @@
                     
                 case 5:
                 {
-                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull destVC) {
+                    [self sui_signalPassed:^RACSignal * _Nonnull(__kindof UIViewController * _Nonnull cDestVC) {
                         
-                        if ([destVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
+                        if ([cDestVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
                         {
                             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                                [subscriber sendNext:@"Instantiate Nav"];
-                                [subscriber sendNext:@"Modal"];
+                                [subscriber sendNext:[RACTuple tupleWithObjectsFromArray:@[@"Instantiate Nav", @"Modal"]]];
                                 [subscriber sendCompleted];
                                 return nil;
                             }];

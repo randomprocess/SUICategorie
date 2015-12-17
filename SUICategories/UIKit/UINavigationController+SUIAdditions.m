@@ -8,7 +8,6 @@
 
 #import "UINavigationController+SUIAdditions.h"
 #import "NSObject+SUIAdditions.h"
-#import "SUIMacros.h"
 #import "SUIUtilities.h"
 #import "ReactiveCocoa.h"
 #import "UIViewController+SUIAdditions.h"
@@ -107,21 +106,10 @@
             return ![value isKindOfClass:[SUINavigationExten class]];
         }] subscribeNext:^(id x) {
             @strongify(self)
-            self.sui_navigationExten = x;
+            self.sui_navigationExten.sui_delegate = x;
             self.delegate = self.sui_navigationExten;
         }];
     }
-}
-
-- (id<UINavigationControllerDelegate>)delegate
-{
-    SUINavigationExten *curNavigationExten = [self sui_getAssociatedObjectWithKey:@selector(sui_navigationExten)];
-    if (curNavigationExten) {
-        if (curNavigationExten.sui_delegate) {
-            return curNavigationExten.sui_delegate;
-        }
-    }
-    return nil;
 }
 
 - (SUINavigationExten *)sui_navigationExten
@@ -141,11 +129,11 @@
 
 #pragma mark - StoryboardLink
 
-- (SUIUtilitiesDelayTask)sui_loadRootViewControllerDelayTask
+- (SUIToolDelayTask)sui_loadRootViewControllerDelayTask
 {
     return [self sui_getAssociatedObjectWithKey:@selector(sui_loadRootViewControllerDelayTask)];
 }
-- (void)setSui_loadRootViewControllerDelayTask:(SUIUtilitiesDelayTask)sui_loadRootViewControllerDelayTask
+- (void)setSui_loadRootViewControllerDelayTask:(SUIToolDelayTask)sui_loadRootViewControllerDelayTask
 {
     [self sui_setAssociatedObject:sui_loadRootViewControllerDelayTask key:@selector(sui_loadRootViewControllerDelayTask) policy:OBJC_ASSOCIATION_COPY];
 }
@@ -159,7 +147,7 @@
     [self sui_setAssociatedObject:sui_storyboardName key:@selector(sui_storyboardName) policy:OBJC_ASSOCIATION_COPY];
     
     [self setSui_loadRootViewControllerDelayTask:
-    [SUIUtilities delay:0.001 cb:^{
+    [SUITool delay:0.001 cb:^{
         UIStoryboard *curStoryboard = gStoryboardNamed(sui_storyboardName);
         uAssert(curStoryboard.instantiateInitialViewController, @"should set Initial View Controller OR set storyboardID")
         [self setViewControllers:@[curStoryboard.instantiateInitialViewController] animated:NO];
@@ -174,11 +162,11 @@
 {
     [self sui_setAssociatedObject:sui_storyboardID key:@selector(sui_storyboardID) policy:OBJC_ASSOCIATION_COPY];
 
-    SUIUtilitiesDelayTask curDelayTask = [self sui_loadRootViewControllerDelayTask];
+    SUIToolDelayTask curDelayTask = [self sui_loadRootViewControllerDelayTask];
     
     if (curDelayTask) {
         [self setSui_loadRootViewControllerDelayTask:nil];
-        [SUIUtilities cancelDelayTask:curDelayTask];
+        [SUITool cancelDelayTask:curDelayTask];
         curDelayTask = nil;
     }
     

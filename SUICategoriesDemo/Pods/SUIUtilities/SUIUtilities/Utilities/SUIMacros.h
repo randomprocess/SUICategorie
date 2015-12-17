@@ -37,6 +37,7 @@
 
 #define kScreenWidth ([UIScreen mainScreen].bounds.size.width)
 #define kScreenHeight ([UIScreen mainScreen].bounds.size.height)
+#define kScreenFrame [UIScreen mainScreen].bounds
 
 // iOS7 @"zh-Hans", @"zh-Hant", ...
 // iOS8 @"zh-Hans", @"zh-Hant", @"zh-HK", ...
@@ -99,10 +100,13 @@ NSString *hexString = [__hex stringByReplacingOccurrencesOfString:@"#" withStrin
 #define gLocalStringFromTable(__string, __fileName) NSLocalizedStringFromTable(__string, __fileName, nil)
 
 #define gWindow ((UIWindow *)[[[UIApplication sharedApplication] windows] objectAtIndex:0])
+#define gKeyWindow [UIApplication sharedApplication].keyWindow
 
-#define gMainStoryboard [UIStoryboard storyboardWithName:@"Main" bundle:nil]
 #define gStoryboardNamed(__name) [UIStoryboard storyboardWithName:__name bundle:nil]
-#define gStoryboardInstantiate(__name, __storyboardId) [gStoryboardNamed(__name) instantiateViewControllerWithIdentifier:__storyboardId]
+#define gStoryboardCurrentInstantiateWithStoryboardID(__storyboardID) [self.storyboard instantiateViewControllerWithIdentifier:__storyboardID]
+#define gStoryboardInstantiate(__name, __storyboardID) [gStoryboardNamed(__name) instantiateViewControllerWithIdentifier:__storyboardID]
+#define gStoryboardInitialViewController(__name) gStoryboardNamed(__name).instantiateInitialViewController
+
 
 #define gRandomInRange(__startIndex, __endIndex) (int)(arc4random_uniform((u_int32_t)(__endIndex-__startIndex+1)) + __startIndex) // __startIndex ~ __endIndex
 
@@ -158,6 +162,27 @@ static dispatch_once_t onceToken;\
 dispatch_once(&onceToken, ^{\
 __stuff \
 });\
+}
+
+#define uSharedInstance \
++ (instancetype)sharedInstance { \
+static id sharedSingleton = nil; \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+sharedSingleton = [[self alloc] init]; \
+}); \
+return sharedSingleton; \
+}
+
+#define uSharedInstanceWithCommonInit \
++ (instancetype)sharedInstance { \
+static id sharedSingleton = nil; \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+sharedSingleton = [[self alloc] init]; \
+[sharedSingleton commonInit]; \
+}); \
+return sharedSingleton; \
 }
 
 

@@ -9,7 +9,7 @@
 #import "UIViewController+SUIAdditions.h"
 #import "NSObject+SUIAdditions.h"
 #import "NSString+SUIAdditions.h"
-#import "SUIMacros.h"
+#import "SUIUtilities.h"
 #import "UIView+SUIAdditions.h"
 #import "RACDelegateProxy.h"
 
@@ -167,7 +167,7 @@
     if (curSrcSignal) return curSrcSignal;
     
     if (self.sui_sourceVC.sui_destSignalPassed) {
-        curSrcSignal = self.sui_sourceVC.sui_destSignalPassed(self);
+        curSrcSignal = [self.sui_sourceVC.sui_destSignalPassed(self) replayLazily];
     }
     
     if (curSrcSignal) self.sui_sourceSignal = curSrcSignal;
@@ -182,7 +182,7 @@
 {
     return [self sui_getAssociatedObjectWithKey:@selector(sui_destSignalPassed)];
 }
-- (void)sui_signalPassed:(RACSignal *(^)(__kindof UIViewController *destVC))cb
+- (void)sui_signalPassed:(RACSignal *(^)(__kindof UIViewController *cDestVC))cb
 {
     [self sui_setAssociatedObject:cb key:@selector(sui_destSignalPassed) policy:OBJC_ASSOCIATION_COPY_NONATOMIC];
 }
@@ -198,13 +198,36 @@
 {
     [self performSegueWithIdentifier:cIdentifier sender:self];
 }
-- (void)sui_storyboardInstantiate:(NSString *)cName storyboardID:(NSString *)cID
+
+- (void)sui_storyboardCurrentInstantiateWithStoryboardID:(NSString *)cStoryboardID
 {
-    [self sui_storyboardInstantiate:cName storyboardID:cID segueType:SUISegueTypePush];
+    [self sui_storyboardCurrentInstantiateWithStoryboardID:cStoryboardID segueType:SUISegueTypePush];
 }
-- (void)sui_storyboardInstantiate:(NSString *)cName storyboardID:(NSString *)cID segueType:(SUISegueType)cType
+- (void)sui_storyboardCurrentInstantiateWithStoryboardID:(NSString *)cStoryboardID segueType:(SUISegueType)cType
 {
-    UIViewController *curVC = gStoryboardInstantiate(cName, cID);
+    UIStoryboard *curStoryboard = self.storyboard;
+    [self sui_storyboardInstantiateWithStoryboard:curStoryboard storyboardID:cStoryboardID segueType:cType];
+}
+
+- (void)sui_storyboardInstantiate:(NSString *)cName storyboardID:(NSString *)cStoryboardID
+{
+    [self sui_storyboardInstantiate:cName storyboardID:cStoryboardID segueType:SUISegueTypePush];
+}
+- (void)sui_storyboardInstantiate:(NSString *)cName storyboardID:(NSString *)cStoryboardID segueType:(SUISegueType)cType
+{
+    UIStoryboard *curStoryboard = gStoryboardNamed(cName);
+    [self sui_storyboardInstantiateWithStoryboard:curStoryboard storyboardID:cStoryboardID segueType:cType];
+}
+
+- (void)sui_storyboardInstantiateWithStoryboard:(UIStoryboard *)cStoryboard storyboardID:(NSString *)cStoryboardID segueType:(SUISegueType)cType
+{
+    UIViewController *curVC = nil;
+    if (cStoryboardID) {
+        curVC = [cStoryboard instantiateViewControllerWithIdentifier:cStoryboardID];
+    } else {
+        curVC = cStoryboard.instantiateInitialViewController;
+    }
+    
     if ([curVC isKindOfClass:[UINavigationController class]]) {
         UINavigationController *curNav = (UINavigationController *)curVC;
         curNav.topViewController.sui_sourceVC = self;

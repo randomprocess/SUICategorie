@@ -74,7 +74,7 @@ typedef NS_ENUM(NSInteger, SUISegueType) {
 @property (nullable,nonatomic,weak) UIViewController *sui_sourceVC;
 @property (nullable,nonatomic,strong) RACSignal *sui_sourceSignal;
 
-- (void)sui_signalPassed:(RACSignal *(^)(__kindof UIViewController *destVC))cb;
+- (void)sui_signalPassed:(RACSignal *(^)(__kindof UIViewController *cDestVC))cb;
 
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
@@ -84,9 +84,12 @@ typedef NS_ENUM(NSInteger, SUISegueType) {
 #pragma mark - StoryboardLink
 
 - (void)sui_storyboardSegueWithIdentifier:(NSString *)cIdentifier;
-- (void)sui_storyboardInstantiate:(NSString *)cName storyboardID:(NSString *)cID;
-- (void)sui_storyboardInstantiate:(NSString *)cName storyboardID:(NSString *)cID segueType:(SUISegueType)cType;
 
+- (void)sui_storyboardCurrentInstantiateWithStoryboardID:(NSString *)cStoryboardID;
+- (void)sui_storyboardCurrentInstantiateWithStoryboardID:(NSString *)cStoryboardID segueType:(SUISegueType)cType;
+- (void)sui_storyboardInstantiate:(NSString *)cName storyboardID:(nullable NSString *)cStoryboardID;
+- (void)sui_storyboardInstantiate:(NSString *)cName storyboardID:(nullable NSString *)cStoryboardID segueType:(SUISegueType)cType;
+- (void)sui_storyboardInstantiateWithStoryboard:(UIStoryboard *)cStoryboard storyboardID:(nullable NSString *)cStoryboardID segueType:(SUISegueType)cType;
 
 @end
 

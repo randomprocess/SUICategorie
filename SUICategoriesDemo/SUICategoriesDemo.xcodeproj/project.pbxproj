@@ -87,7 +87,6 @@
 		6DC677971C0FD31F00B74832 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6DC677991C0FD31F00B74832 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DC6779E1C0FD31F00B74832 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DC677A71C0FD50100B74832 /* SUICategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUICategories.h; sourceTree = "<group>"; };
 		6DC677AD1C0FD50100B74832 /* UIButton+SUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+SUIAdditions.h"; sourceTree = "<group>"; };
 		6DC677AE1C0FD50100B74832 /* UIButton+SUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SUIAdditions.m"; sourceTree = "<group>"; };
 		6DC677AF1C0FD50100B74832 /* UIControl+SUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+SUIAdditions.h"; sourceTree = "<group>"; };
@@ -214,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				6DC677A61C0FD50100B74832 /* Foundation */,
-				6DC677A71C0FD50100B74832 /* SUICategories.h */,
 				6DC677A81C0FD50100B74832 /* UIKit */,
 			);
 			name = SUICategories;

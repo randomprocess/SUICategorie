@@ -41,6 +41,14 @@
     return curURL;
 }
 
+- (NSURLRequest *)sui_toURLRequest
+{
+    if (self.length == 0) return nil;
+    
+    NSURLRequest *curURLRequest = [NSURLRequest requestWithURL:self.sui_toURL];
+    return curURLRequest;
+}
+
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
  *  Manipulation
@@ -325,6 +333,51 @@
     
     free(digest);
     return curString;
+}
+
+#pragma mark Rc4
+
+- (NSData *)sui_rc4WithKey:(NSString *)cKey
+{
+    if (self.length == 0) return nil;
+    
+    const char *ut8String = [self UTF8String];
+    size_t len = strlen(ut8String);
+    int j = 0;
+    unsigned char s[256];
+    unsigned char result[len];
+    for (int i = 0; i < 256; i++)
+    {
+        s[i] = i;
+    }
+    for (int i = 0; i < 256; i++)
+    {
+        j = (j + s[i] + [cKey characterAtIndex:(i % cKey.length)]) % 256;
+        swap(&s[i], &s[j]);
+    }
+    
+    int i = j = 0;
+    
+    for (int y = 0; y < len; y++)
+    {
+        i = (i + 1) % 256;
+        j = (j + s[i]) % 256;
+        swap(&s[i], &s[j]);
+        
+        unsigned char f = ut8String[y] ^ s[ (s[i] + s[j]) % 256];
+        result[y]=f;
+    }
+    
+    NSData *curData = [NSData dataWithBytes:result length:sizeof(unsigned char)*len];
+    return curData;
+}
+
+void swap(unsigned char *first, unsigned char *second)
+{
+    unsigned char tempVar; // make a temporary variable
+    tempVar = *first;
+    *first = *second;
+    *second=tempVar;
 }
 
 

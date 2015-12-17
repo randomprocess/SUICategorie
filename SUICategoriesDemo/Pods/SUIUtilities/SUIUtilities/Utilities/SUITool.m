@@ -1,19 +1,20 @@
 //
-//  SUIUtilities.m
+//  SUITool.m
 //  SUIToolKitDemo
 //
 //  Created by zzZ on 15/11/25.
 //  Copyright © 2015年 SUIO~. All rights reserved.
 //
 
-#import "SUIUtilities.h"
+#import "SUITool.h"
 #import <UIKit/UIKit.h>
+#import "SUIMacros.h"
 
 NSString *const sui_everLaunched = @"sui_everLaunched";
 NSString *const sui_everVersion = @"sui_everVersion";
 
 
-@interface SUIUtilities ()
+@interface SUITool ()
 
 @property (nonatomic,assign) SUILaunchedType launchedType;
 
@@ -25,7 +26,7 @@ NSString *const sui_everVersion = @"sui_everVersion";
  *  Launched
  *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
 
-@implementation SUIUtilities (SUILaunch)
+@implementation SUITool (SUILaunch)
 
 - (void)updateVersion
 {
@@ -67,26 +68,15 @@ NSString *const sui_everVersion = @"sui_everVersion";
 
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
- *  Utilities
+ *  Tool
  *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
 
-@implementation SUIUtilities
+@implementation SUITool
 
 
 #pragma mark - Init
 
-+ (instancetype)sharedInstance
-{
-    static SUIUtilities *sharedSingleton = nil;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^{
-        sharedSingleton = [[self alloc] init];
-        [sharedSingleton commonInit];
-    });
-    
-    return sharedSingleton;
-}
+uSharedInstanceWithCommonInit
 
 - (void)commonInit
 {
@@ -314,12 +304,12 @@ NSString *const sui_everVersion = @"sui_everVersion";
     return ret;
 }
 
-+ (SUIUtilitiesDelayTask)delay:(NSTimeInterval)delay cb:(void (^)(void))completion;
++ (SUIToolDelayTask)delay:(NSTimeInterval)delay cb:(void (^)(void))completion;
 {
     __block dispatch_block_t closure = completion;
-    __block SUIUtilitiesDelayTask currTask = nil;
+    __block SUIToolDelayTask currTask = nil;
     
-    SUIUtilitiesDelayTask delayedBlock = ^(BOOL cancel) {
+    SUIToolDelayTask delayedBlock = ^(BOOL cancel) {
         if (cancel == NO) {
             dispatch_async(dispatch_get_main_queue(), closure);
         }
@@ -335,7 +325,7 @@ NSString *const sui_everVersion = @"sui_everVersion";
     return currTask;
 }
 
-+ (void)cancelDelayTask:(SUIUtilitiesDelayTask)cTask
++ (void)cancelDelayTask:(SUIToolDelayTask)cTask
 {
     if (cTask) cTask(YES);
 }

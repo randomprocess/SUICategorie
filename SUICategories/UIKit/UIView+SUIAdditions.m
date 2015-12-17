@@ -9,8 +9,48 @@
 #import "UIView+SUIAdditions.h"
 #import "SUIUtilities.h"
 #import "ReactiveCocoa.h"
+#import "NSObject+SUIAdditions.h"
 
 @implementation UIView (SUIAdditions)
+
+
+/*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
+ *  Nib
+ *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
+
+#pragma mark - Nib
+
+- (BOOL)sui_loadNib
+{
+    UIView *curMainView = [self sui_mainView];
+    return (curMainView ? YES : NO);
+}
+- (void)setSui_loadNib:(BOOL)sui_loadNib
+{
+    if (sui_loadNib) {
+        UIView *curMainView = [self sui_mainView];
+        if (!curMainView) {
+            curMainView = [[NSBundle mainBundle] loadNibNamed:gClassName(self) owner:self options:nil][0];
+            [self setSui_mainView:curMainView];
+            [self addSubview:curMainView];
+            
+            self.backgroundColor = [UIColor clearColor];
+            curMainView.frame = self.bounds;
+            curMainView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        }
+    } else {
+        [self setSui_mainView:nil];
+    }
+}
+
+- (UIView *)sui_mainView
+{
+    return [self sui_getAssociatedObjectWithKey:@selector(sui_mainView)];
+}
+- (void)setSui_mainView:(UIView *)sui_mainView
+{
+    [self sui_setAssociatedObject:sui_mainView key:@selector(sui_mainView) policy:OBJC_ASSOCIATION_RETAIN_NONATOMIC];
+}
 
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
@@ -371,7 +411,7 @@
 
 - (void)sui_show
 {
-    [self sui_showWithDuration:0.2 animationType:SUIViewAnimationTypeFade];
+    [self sui_showWithDuration:0.25 animationType:SUIViewAnimationTypeFade];
 }
 - (void)sui_showWithDuration:(NSTimeInterval)duration animationType:(SUIViewAnimationType)cType
 {
@@ -394,11 +434,11 @@
 
 - (void)sui_hide
 {
-    [self sui_hideWithDuration:0.2 animateType:SUIViewAnimationTypeFade remove:NO];
+    [self sui_hideWithDuration:0.25 animateType:SUIViewAnimationTypeFade remove:NO];
 }
 - (void)sui_hideAndRemoveFromSupview
 {
-    [self sui_hideWithDuration:0.2 animateType:SUIViewAnimationTypeFade remove:YES];
+    [self sui_hideWithDuration:0.25 animateType:SUIViewAnimationTypeFade remove:YES];
 }
 - (void)sui_hideWithDuration:(NSTimeInterval)duration animateType:(SUIViewAnimationType)cType remove:(BOOL)remove
 {
@@ -409,7 +449,7 @@
                              animations:^{
                                  self.alpha = 0;
                              } completion:^(BOOL finished) {
-                                 if (remove) {
+                                 if (remove && self.superview) {
                                      [self removeFromSuperview];
                                  }
                              }];

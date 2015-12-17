@@ -7,6 +7,7 @@
 //
 
 #import "NSObject+SUIAdditions.h"
+#import "ReactiveCocoa.h"
 
 @implementation NSObject (SUIAdditions)
 

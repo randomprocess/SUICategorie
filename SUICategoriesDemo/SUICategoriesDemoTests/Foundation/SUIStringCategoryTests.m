@@ -47,6 +47,11 @@ static NSString *const kSutString2 = @"  \n  \n\n A collection of \n  useful Obj
     XCTAssertEqualObjects(self.sutString1, [self.sutString1.sui_toURL.absoluteString sui_URLDecoded]);
     XCTAssertEqualObjects(self.sutString2, [self.sutString2.sui_toURL.absoluteString sui_URLDecoded]);
 }
+- (void)testToURLRequest
+{
+    XCTAssertNotNil(self.sutString1.sui_toURLRequest);
+    XCTAssertNotNil(self.sutString2.sui_toURLRequest);
+}
 
 
 #pragma mark - Manipulation

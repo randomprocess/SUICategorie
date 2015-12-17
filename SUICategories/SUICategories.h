@@ -11,7 +11,7 @@
 
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
- *  NS
+ *  Foundation
  *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
 
 #import "NSString+SUIAdditions.h"
@@ -24,7 +24,7 @@
 
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
- *  UI
+ *  UIKit
  *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
 
 #import "UIButton+SUIAdditions.h"
@@ -34,14 +34,6 @@
 #import "UIScrollView+SUIAdditions.h"
 #import "UIView+SUIAdditions.h"
 #import "UIViewController+SUIAdditions.h"
-
-
-
-
-
-
-
-
 
 
 #endif

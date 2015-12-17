@@ -1,100 +1,30 @@
 //
 //  SUIUtilities.h
-//  SUIToolKitDemo
+//  SUICategoriesDemo
 //
-//  Created by zzZ on 15/11/25.
-//  Copyright © 2015年 SUIO~. All rights reserved.
+//  Created by zzZ on 15/12/15.
+//  Copyright © 2015年 suio~. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#ifndef SUIUtilities_h
+#define SUIUtilities_h
+
+
+/*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
+ *  Utilities
+ *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
+
 #import "SUIMacros.h"
-
-NS_ASSUME_NONNULL_BEGIN
-
-typedef enum : NSUInteger {
-    SUILaunchedTypeLatestVersion,
-    SUILaunchedTypeFirstLaunched,
-    SUILaunchedTypeUpdateVersion,
-} SUILaunchedType;
-
-typedef void (^SUIUtilitiesDelayTask)(BOOL cancel);
-
-
-@interface SUIUtilities : NSObject
+#import "SUITool.h"
 
 
 /*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
- *  Launched
+ *  Network
  *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
 
-#pragma mark - Launched
-
-+ (SUILaunchedType)launchedType;
-
-+ (nullable NSString *)previousVersion;
+#import "SUINetworkConfig.h"
+#import "SUINetwork.h"
 
 
-/*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
- *  File manager
- *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
 
-#pragma mark - File manager
-
-+ (BOOL)fileCreateDirectory:(NSString *)filePath;
-
-+ (BOOL)fileExist:(NSString *)filePath;
-
-+ (BOOL)fileWrite:(NSData *)data toPath:(NSString *)filePath;
-
-+ (BOOL)fileMove:(NSString *)sourcePath toPath:(NSString *)filePath;
-
-+ (BOOL)fileCopy:(NSString *)sourcePath toPath:(NSString *)filePath;
-
-+ (NSData *)fileRead:(NSString *)filePath;
-
-+ (NSUInteger)fileSize:(NSString *)filePath;
-
-+ (BOOL)fileDelete:(NSString *)filePath;
-
-
-/*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
- *  Unique identifier
- *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
-
-#pragma mark - Unique identifier
-
-+ (NSString *)uuidString;
-
-+ (NSString *)idfvString;
-
-
-/*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
- *  Camera & PhotoLibrary
- *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
-
-#pragma mark - Camera & PhotoLibrary
-
-+ (BOOL)cameraAvailable;
-
-+ (BOOL)cameraRearAvailable;
-
-+ (BOOL)cameraFrontAvailable;
-
-+ (BOOL)photoLibraryAvailable;
-
-
-/*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
- *  Others
- *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
-
-#pragma mark - Others
-
-+ (BOOL)toAppStore:(NSString *)appId;
-
-+ (SUIUtilitiesDelayTask)delay:(NSTimeInterval)delay cb:(void (^)(void))completion;
-
-+ (void)cancelDelayTask:(SUIUtilitiesDelayTask)cTask;
-
-@end
-
-NS_ASSUME_NONNULL_END
+#endif

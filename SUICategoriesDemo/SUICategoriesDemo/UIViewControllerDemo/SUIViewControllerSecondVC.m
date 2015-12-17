@@ -8,6 +8,7 @@
 
 #import "SUIViewControllerSecondVC.h"
 #import "UIViewController+SUIAdditions.h"
+#import "SUIUtilities.h"
 
 @interface SUIViewControllerSecondVC ()
 
@@ -23,13 +24,12 @@
 {
     [super viewDidLoad];
     
-    RAC(self.lbl1, text) = [[self.sui_sourceSignal take:1] distinctUntilChanged];
-    RAC(self.lbl2, text) = [[[self.sui_sourceSignal skip:1] take:1] distinctUntilChanged];
-
-    [self.sui_sourceSignal subscribeCompleted:^{
+    [self.sui_sourceSignal subscribeNext:^(RACTuple *cTuple) {
+        self.lbl1.text = cTuple.first;
+        self.lbl2.text = cTuple.second;
+    } completed:^{
         uFun;
     }];
 }
-
 
 @end
