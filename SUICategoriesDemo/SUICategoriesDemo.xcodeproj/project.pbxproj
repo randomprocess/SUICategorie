@@ -76,6 +76,7 @@
 		6D6B303A1C16D3DB00CD8235 /* SUICategoriesDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SUICategoriesDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6B303C1C16D3DB00CD8235 /* SUICategoriesDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SUICategoriesDemoTests.m; sourceTree = "<group>"; };
 		6D6B303E1C16D3DB00CD8235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D75592B1C2397C700085A53 /* SUICategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUICategories.h; sourceTree = "<group>"; };
 		6D7A37B31C1531FD00DFD8C2 /* NSString+SUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SUIAdditions.h"; sourceTree = "<group>"; };
 		6D7A37B41C1531FD00DFD8C2 /* NSString+SUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SUIAdditions.m"; sourceTree = "<group>"; };
 		6D7A98A71C17EDC40049FF1B /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -212,6 +213,7 @@
 		6DC677A51C0FD50100B74832 /* SUICategories */ = {
 			isa = PBXGroup;
 			children = (
+				6D75592B1C2397C700085A53 /* SUICategories.h */,
 				6DC677A61C0FD50100B74832 /* Foundation */,
 				6DC677A81C0FD50100B74832 /* UIKit */,
 			);
