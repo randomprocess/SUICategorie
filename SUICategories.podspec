@@ -31,4 +31,9 @@ Pod::Spec.new do |s|
     ss.source_files = 'SUICategories/UIKit/*.{h,m}'
   end
 
+  s.subspec 'BlurEffect' do |ss|
+    ss.frameworks = 'Accelerate'
+    ss.source_files = 'SUICategories/BlurEffect/*.{h,m}'
+  end
+
 end

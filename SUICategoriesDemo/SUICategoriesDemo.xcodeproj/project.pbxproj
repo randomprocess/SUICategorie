@@ -18,6 +18,8 @@
 		6D3325D71C19705F004BE46E /* SUIDateCategoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3325D61C19705F004BE46E /* SUIDateCategoryTests.m */; settings = {ASSET_TAGS = (); }; };
 		6D3325DA1C197B0D004BE46E /* NSData+SUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3325D91C197B0D004BE46E /* NSData+SUIAdditions.m */; settings = {ASSET_TAGS = (); }; };
 		6D3325DC1C197B37004BE46E /* SUIDataCategoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3325DB1C197B37004BE46E /* SUIDataCategoryTests.m */; settings = {ASSET_TAGS = (); }; };
+		6D38E0731C28E74400FABBEA /* UIImage+SUIBlurEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D38E0721C28E74400FABBEA /* UIImage+SUIBlurEffect.m */; settings = {ASSET_TAGS = (); }; };
+		6D38E0761C28EB0400FABBEA /* UIImage+SUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D38E0751C28EB0400FABBEA /* UIImage+SUIAdditions.m */; settings = {ASSET_TAGS = (); }; };
 		6D63B81F1C1AC9B6003DD9E1 /* SUIViewControllerRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D63B81E1C1AC9B6003DD9E1 /* SUIViewControllerRootVC.m */; settings = {ASSET_TAGS = (); }; };
 		6D63B8221C1AC9DD003DD9E1 /* SUIViewControllerSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D63B8211C1AC9DD003DD9E1 /* SUIViewControllerSecondVC.m */; settings = {ASSET_TAGS = (); }; };
 		6D6B30101C1674C400CD8235 /* NSObject+SUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B300F1C1674C400CD8235 /* NSObject+SUIAdditions.m */; settings = {ASSET_TAGS = (); }; };
@@ -67,6 +69,10 @@
 		6D3325D81C197B0D004BE46E /* NSData+SUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SUIAdditions.h"; sourceTree = "<group>"; };
 		6D3325D91C197B0D004BE46E /* NSData+SUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SUIAdditions.m"; sourceTree = "<group>"; };
 		6D3325DB1C197B37004BE46E /* SUIDataCategoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIDataCategoryTests.m; sourceTree = "<group>"; };
+		6D38E0711C28E74400FABBEA /* UIImage+SUIBlurEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SUIBlurEffect.h"; sourceTree = "<group>"; };
+		6D38E0721C28E74400FABBEA /* UIImage+SUIBlurEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SUIBlurEffect.m"; sourceTree = "<group>"; };
+		6D38E0741C28EB0400FABBEA /* UIImage+SUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SUIAdditions.h"; sourceTree = "<group>"; };
+		6D38E0751C28EB0400FABBEA /* UIImage+SUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SUIAdditions.m"; sourceTree = "<group>"; };
 		6D63B81D1C1AC9B6003DD9E1 /* SUIViewControllerRootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUIViewControllerRootVC.h; sourceTree = "<group>"; };
 		6D63B81E1C1AC9B6003DD9E1 /* SUIViewControllerRootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIViewControllerRootVC.m; sourceTree = "<group>"; };
 		6D63B8201C1AC9DD003DD9E1 /* SUIViewControllerSecondVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUIViewControllerSecondVC.h; sourceTree = "<group>"; };
@@ -130,6 +136,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D38E0701C28E70400FABBEA /* BlurEffect */ = {
+			isa = PBXGroup;
+			children = (
+				6D38E0711C28E74400FABBEA /* UIImage+SUIBlurEffect.h */,
+				6D38E0721C28E74400FABBEA /* UIImage+SUIBlurEffect.m */,
+			);
+			path = BlurEffect;
+			sourceTree = "<group>";
+		};
 		6D63B81C1C1AC8DF003DD9E1 /* UIViewControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				6D75592B1C2397C700085A53 /* SUICategories.h */,
+				6D38E0701C28E70400FABBEA /* BlurEffect */,
 				6DC677A61C0FD50100B74832 /* Foundation */,
 				6DC677A81C0FD50100B74832 /* UIKit */,
 			);
@@ -259,6 +275,8 @@
 				6DC677B61C0FD50100B74832 /* UIView+SUIAdditions.m */,
 				6DC677B71C0FD50100B74832 /* UIViewController+SUIAdditions.h */,
 				6DC677B81C0FD50100B74832 /* UIViewController+SUIAdditions.m */,
+				6D38E0741C28EB0400FABBEA /* UIImage+SUIAdditions.h */,
+				6D38E0751C28EB0400FABBEA /* UIImage+SUIAdditions.m */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -515,6 +533,8 @@
 				6DC677BC1C0FD50100B74832 /* UIControl+SUIAdditions.m in Sources */,
 				6DC677BB1C0FD50100B74832 /* UIButton+SUIAdditions.m in Sources */,
 				6D63B8221C1AC9DD003DD9E1 /* SUIViewControllerSecondVC.m in Sources */,
+				6D38E0761C28EB0400FABBEA /* UIImage+SUIAdditions.m in Sources */,
+				6D38E0731C28E74400FABBEA /* UIImage+SUIBlurEffect.m in Sources */,
 				6DC677921C0FD31F00B74832 /* AppDelegate.m in Sources */,
 				6DC6778F1C0FD31F00B74832 /* main.m in Sources */,
 				6D3325DA1C197B0D004BE46E /* NSData+SUIAdditions.m in Sources */,
