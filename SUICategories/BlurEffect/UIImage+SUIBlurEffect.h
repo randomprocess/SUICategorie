@@ -16,9 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIImage * __null_unspecified)sui_imageByApplyingLightEffect;
 - (UIImage * __null_unspecified)sui_imageByApplyingExtraLightEffect;
 - (UIImage * __null_unspecified)sui_imageByApplyingDarkEffect;
-- (UIImage * __null_unspecified)sui_imageByApplyingTintEffectWithColo:(nullable UIColor *)tintColo;
+- (UIImage * __null_unspecified)sui_imageByApplyingTintEffectWithColor:(nullable UIColor *)tintColo;
 
-- (UIImage * __null_unspecified)sui_imageByApplyingBlurWithRadius:(CGFloat)blurRadius tintColo:(nullable UIColor *)tintColo saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(nullable UIImage *)maskImage;
+- (UIImage * __null_unspecified)sui_imageByApplyingBlurWithRadius:(CGFloat)blurRadius tintColor:(nullable UIColor *)tintColo saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(nullable UIImage *)maskImage;
 
 
 @end

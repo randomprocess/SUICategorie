@@ -15,22 +15,22 @@
 - (UIImage *)sui_imageByApplyingLightEffect
 {
     UIColor *tintColo = [UIColor colorWithWhite:1.0 alpha:0.3];
-    return [self sui_imageByApplyingBlurWithRadius:60 tintColo:tintColo saturationDeltaFactor:1.8 maskImage:nil];
+    return [self sui_imageByApplyingBlurWithRadius:60 tintColor:tintColo saturationDeltaFactor:1.8 maskImage:nil];
 }
 
 - (UIImage *)sui_imageByApplyingExtraLightEffect
 {
     UIColor *tintColo = [UIColor colorWithWhite:0.97 alpha:0.82];
-    return [self sui_imageByApplyingBlurWithRadius:40 tintColo:tintColo saturationDeltaFactor:1.8 maskImage:nil];
+    return [self sui_imageByApplyingBlurWithRadius:40 tintColor:tintColo saturationDeltaFactor:1.8 maskImage:nil];
 }
 
 - (UIImage *)sui_imageByApplyingDarkEffect
 {
     UIColor *tintColo = [UIColor colorWithWhite:0.11 alpha:0.73];
-    return [self sui_imageByApplyingBlurWithRadius:40 tintColo:tintColo saturationDeltaFactor:1.8 maskImage:nil];
+    return [self sui_imageByApplyingBlurWithRadius:40 tintColor:tintColo saturationDeltaFactor:1.8 maskImage:nil];
 }
 
-- (UIImage *)sui_imageByApplyingTintEffectWithColo:(UIColor *)tintColo
+- (UIImage *)sui_imageByApplyingTintEffectWithColor:(UIColor *)tintColo
 {
     const CGFloat EffectColorAlpha = 0.6;
     UIColor *effectColor = tintColo;
@@ -46,14 +46,14 @@
             effectColor = [UIColor colorWithRed:r green:g blue:b alpha:EffectColorAlpha];
         }
     }
-    return [self sui_imageByApplyingBlurWithRadius:20 tintColo:effectColor saturationDeltaFactor:-1.0 maskImage:nil];
+    return [self sui_imageByApplyingBlurWithRadius:20 tintColor:effectColor saturationDeltaFactor:-1.0 maskImage:nil];
 }
 
 
 #pragma mark -
 #pragma mark - Implementation
 
-- (UIImage *)sui_imageByApplyingBlurWithRadius:(CGFloat)blurRadius tintColo:(UIColor *)tintColo saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage
+- (UIImage *)sui_imageByApplyingBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColo saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage
 {
 #define ENABLE_BLUR                     1
 #define ENABLE_SATURATION_ADJUSTMENT    1

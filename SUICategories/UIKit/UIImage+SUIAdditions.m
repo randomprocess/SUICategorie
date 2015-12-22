@@ -11,17 +11,17 @@
 @implementation UIImage (SUIAdditions)
 
 
-- (UIImage *)sui_imageWithTintColo:(UIColor *)tintColo
+- (UIImage *)sui_imageWithTintColor:(UIColor *)tintColo
 {
-    return [self sui_imageWithTintColo:tintColo blendMode:kCGBlendModeDestinationIn];
+    return [self sui_imageWithTintColor:tintColo blendMode:kCGBlendModeDestinationIn];
 }
 
-- (UIImage *)sui_imageWithGradientTintColo:(UIColor *)tintColo
+- (UIImage *)sui_imageWithGradientTintColor:(UIColor *)tintColo
 {
-    return [self sui_imageWithTintColo:tintColo blendMode:kCGBlendModeOverlay];
+    return [self sui_imageWithTintColor:tintColo blendMode:kCGBlendModeOverlay];
 }
 
-- (UIImage *)sui_imageWithTintColo:(UIColor *)tintColo blendMode:(CGBlendMode)blendMode
+- (UIImage *)sui_imageWithTintColor:(UIColor *)tintColo blendMode:(CGBlendMode)blendMode
 {
     //We want to keep alpha, set opaque to NO; Use 0.0f for scale to use the scale factor of the device’s main screen.
     UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);

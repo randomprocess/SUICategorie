@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIImage (SUIAdditions)
 
 
-- (UIImage * __null_unspecified)sui_imageWithTintColo:(UIColor *)tintColo; // kCGBlendModeDestinationIn
-- (UIImage * __null_unspecified)sui_imageWithGradientTintColo:(UIColor *)tintColo; // kCGBlendModeOverlay
-- (UIImage * __null_unspecified)sui_imageWithTintColo:(UIColor *)tintColo blendMode:(CGBlendMode)blendMode;
+- (UIImage * __null_unspecified)sui_imageWithTintColor:(UIColor *)tintColo; // kCGBlendModeDestinationIn
+- (UIImage * __null_unspecified)sui_imageWithGradientTintColor:(UIColor *)tintColo; // kCGBlendModeOverlay
+- (UIImage * __null_unspecified)sui_imageWithTintColor:(UIColor *)tintColo blendMode:(CGBlendMode)blendMode;
 
 
 @end
