@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)sui_containsObject:(id)cObject;
 - (BOOL)sui_containsString:(NSString *)cString;
-- (BOOL)sui_isEmpty;
+- (BOOL)sui_isNotEmpty;
 
 #pragma mark Regex
 

@@ -122,14 +122,15 @@
     BOOL isContains = ([self rangeOfString:cString].location != NSNotFound);
     return isContains;
 }
-- (BOOL)sui_isEmpty
+- (BOOL)sui_isNotEmpty
 {
-    if (self == nil || [self isEqual:[NSNull null]]) return NO;
+    if ([self isEqual:[NSNull null]]) return NO;
     
     if (self.length == 0) return NO;
     
     NSString *curStr = [self sui_regex:@"\\S"];
-    return (curStr.length == 0);
+    if (curStr.length == 0) return NO;
+    return YES;
 }
 
 #pragma mark Regex
