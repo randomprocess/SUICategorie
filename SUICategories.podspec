@@ -36,11 +36,4 @@ Pod::Spec.new do |s|
     ss.source_files = 'SUICategories/BlurEffect/*.{h,m}'
   end
 
-  s.subspec 'CustomView' do |ss|
-    ss.dependency 'SUICategories/Foundation'
-    ss.dependency 'SUICategories/UIKit'
-    ss.dependency 'SUICategories/BlurEffect'
-    ss.source_files = 'SUICategories/CustomView/*.{h,m}'
-  end
-
 end
