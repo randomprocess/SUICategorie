@@ -26,6 +26,9 @@
 		6D6B303D1C16D3DB00CD8235 /* SUICategoriesDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B303C1C16D3DB00CD8235 /* SUICategoriesDemoTests.m */; };
 		6D7A37B51C1531FD00DFD8C2 /* NSString+SUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7A37B41C1531FD00DFD8C2 /* NSString+SUIAdditions.m */; settings = {ASSET_TAGS = (); }; };
 		6D7A98A91C17F67A0049FF1B /* SUIStringCategoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7A98A81C17F67A0049FF1B /* SUIStringCategoryTests.m */; settings = {ASSET_TAGS = (); }; };
+		6D8881CE1C3511CE0016DB91 /* UITextField+SUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8881CD1C3511CE0016DB91 /* UITextField+SUIAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		6D8881D11C3512AE0016DB91 /* UITextView+SUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8881D01C3512AE0016DB91 /* UITextView+SUIAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		6D8881DB1C352AD30016DB91 /* SUIToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8881DA1C352AD30016DB91 /* SUIToolbar.m */; settings = {ASSET_TAGS = (); }; };
 		6DC6778F1C0FD31F00B74832 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC6778E1C0FD31F00B74832 /* main.m */; };
 		6DC677921C0FD31F00B74832 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC677911C0FD31F00B74832 /* AppDelegate.m */; };
 		6DC677981C0FD31F00B74832 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DC677961C0FD31F00B74832 /* Main.storyboard */; };
@@ -38,6 +41,8 @@
 		6DC677C01C0FD50100B74832 /* UIViewController+SUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC677B81C0FD50100B74832 /* UIViewController+SUIAdditions.m */; settings = {ASSET_TAGS = (); }; };
 		6DC8D36B1C1E8D7100BEF286 /* UITabBarItem+SUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC8D36A1C1E8D7100BEF286 /* UITabBarItem+SUIAdditions.m */; settings = {ASSET_TAGS = (); }; };
 		6DC8D3741C1EA1E500BEF286 /* SUIViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DC8D3731C1EA1E500BEF286 /* SUIViewController.storyboard */; settings = {ASSET_TAGS = (); }; };
+		6DDE429F1C3A0A0B004E0074 /* SUIToolbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE429E1C3A0A0B004E0074 /* SUIToolbarVC.m */; settings = {ASSET_TAGS = (); }; };
+		6DDE42A11C3A0A25004E0074 /* SUIToolbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE42A01C3A0A25004E0074 /* SUIToolbar.storyboard */; settings = {ASSET_TAGS = (); }; };
 		A176C52166D9D7CEF08D04FD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A3012C272354A9B330FFC85 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +92,12 @@
 		6D7A37B41C1531FD00DFD8C2 /* NSString+SUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SUIAdditions.m"; sourceTree = "<group>"; };
 		6D7A98A71C17EDC40049FF1B /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		6D7A98A81C17F67A0049FF1B /* SUIStringCategoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIStringCategoryTests.m; sourceTree = "<group>"; };
+		6D8881CC1C3511CE0016DB91 /* UITextField+SUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+SUIAdditions.h"; sourceTree = "<group>"; };
+		6D8881CD1C3511CE0016DB91 /* UITextField+SUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+SUIAdditions.m"; sourceTree = "<group>"; };
+		6D8881CF1C3512AE0016DB91 /* UITextView+SUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+SUIAdditions.h"; sourceTree = "<group>"; };
+		6D8881D01C3512AE0016DB91 /* UITextView+SUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+SUIAdditions.m"; sourceTree = "<group>"; };
+		6D8881D91C352AD30016DB91 /* SUIToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUIToolbar.h; sourceTree = "<group>"; };
+		6D8881DA1C352AD30016DB91 /* SUIToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIToolbar.m; sourceTree = "<group>"; };
 		6DC6778A1C0FD31F00B74832 /* SUICategoriesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SUICategoriesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DC6778E1C0FD31F00B74832 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6DC677901C0FD31F00B74832 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -110,6 +121,9 @@
 		6DC8D3691C1E8D7100BEF286 /* UITabBarItem+SUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarItem+SUIAdditions.h"; sourceTree = "<group>"; };
 		6DC8D36A1C1E8D7100BEF286 /* UITabBarItem+SUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarItem+SUIAdditions.m"; sourceTree = "<group>"; };
 		6DC8D3731C1EA1E500BEF286 /* SUIViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SUIViewController.storyboard; sourceTree = "<group>"; };
+		6DDE429D1C3A0A0B004E0074 /* SUIToolbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUIToolbarVC.h; sourceTree = "<group>"; };
+		6DDE429E1C3A0A0B004E0074 /* SUIToolbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIToolbarVC.m; sourceTree = "<group>"; };
+		6DDE42A01C3A0A25004E0074 /* SUIToolbar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SUIToolbar.storyboard; sourceTree = "<group>"; };
 		861CE99FAE084309EA1BC71E /* Pods-SUICategoriesDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUICategoriesDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SUICategoriesDemoTests/Pods-SUICategoriesDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		9194FB111258F1E899C77558 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A7A68BA8D6AB993670845238 /* Pods-SUICategoriesDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUICategoriesDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SUICategoriesDemoTests/Pods-SUICategoriesDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -181,6 +195,15 @@
 			path = Foundation;
 			sourceTree = "<group>";
 		};
+		6D8881D81C3526F20016DB91 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				6D8881D91C352AD30016DB91 /* SUIToolbar.h */,
+				6D8881DA1C352AD30016DB91 /* SUIToolbar.m */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		6DC677811C0FD31F00B74832 = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				6D63B81C1C1AC8DF003DD9E1 /* UIViewControllerDemo */,
+				6DDE429C1C3A09E8004E0074 /* SUIToolbarDemo */,
 				6DC677901C0FD31F00B74832 /* AppDelegate.h */,
 				6DC677911C0FD31F00B74832 /* AppDelegate.m */,
 				6DC677961C0FD31F00B74832 /* Main.storyboard */,
@@ -229,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				6D75592B1C2397C700085A53 /* SUICategories.h */,
+				6D8881D81C3526F20016DB91 /* CustomView */,
 				6D38E0701C28E70400FABBEA /* BlurEffect */,
 				6DC677A61C0FD50100B74832 /* Foundation */,
 				6DC677A81C0FD50100B74832 /* UIKit */,
@@ -277,8 +302,22 @@
 				6DC677B81C0FD50100B74832 /* UIViewController+SUIAdditions.m */,
 				6D38E0741C28EB0400FABBEA /* UIImage+SUIAdditions.h */,
 				6D38E0751C28EB0400FABBEA /* UIImage+SUIAdditions.m */,
+				6D8881CC1C3511CE0016DB91 /* UITextField+SUIAdditions.h */,
+				6D8881CD1C3511CE0016DB91 /* UITextField+SUIAdditions.m */,
+				6D8881CF1C3512AE0016DB91 /* UITextView+SUIAdditions.h */,
+				6D8881D01C3512AE0016DB91 /* UITextView+SUIAdditions.m */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		6DDE429C1C3A09E8004E0074 /* SUIToolbarDemo */ = {
+			isa = PBXGroup;
+			children = (
+				6DDE42A01C3A0A25004E0074 /* SUIToolbar.storyboard */,
+				6DDE429D1C3A0A0B004E0074 /* SUIToolbarVC.h */,
+				6DDE429E1C3A0A0B004E0074 /* SUIToolbarVC.m */,
+			);
+			path = SUIToolbarDemo;
 			sourceTree = "<group>";
 		};
 		DD66A27CEA3F027D596FB51A /* Pods */ = {
@@ -395,6 +434,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DDE42A11C3A0A25004E0074 /* SUIToolbar.storyboard in Resources */,
 				6DC6779A1C0FD31F00B74832 /* Assets.xcassets in Resources */,
 				6DC677981C0FD31F00B74832 /* Main.storyboard in Resources */,
 				6DC8D3741C1EA1E500BEF286 /* SUIViewController.storyboard in Resources */,
@@ -529,17 +569,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D7A37B51C1531FD00DFD8C2 /* NSString+SUIAdditions.m in Sources */,
+				6D8881CE1C3511CE0016DB91 /* UITextField+SUIAdditions.m in Sources */,
 				6D63B81F1C1AC9B6003DD9E1 /* SUIViewControllerRootVC.m in Sources */,
 				6DC677BC1C0FD50100B74832 /* UIControl+SUIAdditions.m in Sources */,
 				6DC677BB1C0FD50100B74832 /* UIButton+SUIAdditions.m in Sources */,
 				6D63B8221C1AC9DD003DD9E1 /* SUIViewControllerSecondVC.m in Sources */,
+				6DDE429F1C3A0A0B004E0074 /* SUIToolbarVC.m in Sources */,
 				6D38E0761C28EB0400FABBEA /* UIImage+SUIAdditions.m in Sources */,
 				6D38E0731C28E74400FABBEA /* UIImage+SUIBlurEffect.m in Sources */,
 				6DC677921C0FD31F00B74832 /* AppDelegate.m in Sources */,
+				6D8881DB1C352AD30016DB91 /* SUIToolbar.m in Sources */,
 				6DC6778F1C0FD31F00B74832 /* main.m in Sources */,
 				6D3325DA1C197B0D004BE46E /* NSData+SUIAdditions.m in Sources */,
 				6DC677C01C0FD50100B74832 /* UIViewController+SUIAdditions.m in Sources */,
 				6D3325D01C195ADB004BE46E /* NSNumber+SUIAdditions.m in Sources */,
+				6D8881D11C3512AE0016DB91 /* UITextView+SUIAdditions.m in Sources */,
 				6D3325CD1C1951F9004BE46E /* NSDictionary+SUIAdditions.m in Sources */,
 				6D6B30101C1674C400CD8235 /* NSObject+SUIAdditions.m in Sources */,
 				6D3325D51C196991004BE46E /* NSDate+SUIAdditions.m in Sources */,
@@ -690,8 +734,29 @@
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = SUICategoriesDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"ReactiveCocoa\"",
+					"-l\"SUIUtilities\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ooO.SUICategoriesDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -706,8 +771,29 @@
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = SUICategoriesDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"ReactiveCocoa\"",
+					"-l\"SUIUtilities\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ooO.SUICategoriesDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -91,6 +91,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSData *)sui_rc4WithKey:(NSString *)cKey;
 
 
+/*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
+ *  Validate
+ *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
+
+#pragma mark - Validate
+
+- (BOOL)sui_validateNickname;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

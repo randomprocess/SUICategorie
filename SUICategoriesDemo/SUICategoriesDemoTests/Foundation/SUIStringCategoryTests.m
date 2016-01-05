@@ -100,12 +100,13 @@ static NSString *const kSutString2 = @"  \n  \n\n A collection of \n  useful Obj
     XCTAssertTrue([self.sutString1 sui_containsString:@"process"]);
     XCTAssertFalse([self.sutString1 sui_containsString:@"proceed"]);
 }
-- (void)testIsEmpty
+- (void)testIsNotEmpty
 {
-    XCTAssertFalse([self.sutString1 sui_isEmpty]);
+    XCTAssertTrue([self.sutString1 sui_isNotEmpty]);
+    XCTAssertFalse([@"" sui_isNotEmpty]);
     
-    XCTAssertFalse([@"  \n 1 \n" sui_isEmpty]);
-    XCTAssertTrue([@"  \n  \n" sui_isEmpty]);
+    XCTAssertTrue([@"  \n 1 \n" sui_isNotEmpty]);
+    XCTAssertFalse([@"  \n  \n" sui_isNotEmpty]);
 }
 
 - (void)testRegex

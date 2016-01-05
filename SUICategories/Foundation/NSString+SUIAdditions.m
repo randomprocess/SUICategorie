@@ -382,4 +382,19 @@ void swap(unsigned char *first, unsigned char *second)
 }
 
 
+/*o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o*
+ *  Validate
+ *o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~*/
+
+#pragma mark - Validate
+
+- (BOOL)sui_validateNickname
+{
+    NSString *curRegex = @"^[0-9a-zA-Z\u4e00-\u9fa5]+$";
+    NSPredicate *curPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",curRegex];
+    BOOL ret = [curPredicate evaluateWithObject:self];
+    return ret;
+}
+
+
 @end

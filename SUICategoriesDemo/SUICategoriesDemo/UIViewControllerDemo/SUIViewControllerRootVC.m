@@ -10,15 +10,22 @@
 #import "UIViewController+SUIAdditions.h"
 #import "SUIUtilities.h"
 
+@interface SUIViewControllerRootVC ()
+
+@end
+
+
 @implementation SUIViewControllerRootVC
+{
+    
+}
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    uObj(@"*** SUIViewControllerRootVC ***");
-    
+
+    uLog(@"*** SUIViewControllerRootVC *** %@", self);
     
 #pragma mark - Common
     
@@ -49,17 +56,19 @@
     SUIAlertController *curAlertController = [self sui_showAlertWithTitle:@"aTitle"
                                                                   message:@"aMessage"
                                                                     style:SUIAlertStyleAlert];
-    [curAlertController addAction:
-     [SUIAlertAction actionWithTitle:@"取消" style:SUIAlertActionStyleCancel handler:^(SUIAlertAction * _Nonnull cAction) {
-        uLog(@"Alert Cancel");
-    }]];
+    [curAlertController addTitle:@"取消"
+                           style:SUIAlertActionCancel
+                         handler:^(SUIAlertAction * _Nonnull cAction) {
+                             uLog(@"Alert Cancel");
+                         }];
     
     uWeakSelf
-    [curAlertController addAction:
-     [SUIAlertAction actionWithTitle:@"确定" style:SUIAlertActionStyleDestructive handler:^(SUIAlertAction * _Nonnull cAction) {
-        uLog(@"Alert1");
-        [weakSelf modelPassed];
-    }]];
+    [curAlertController addTitle:@"确定"
+                           style:SUIAlertActionDestructive
+                         handler:^(SUIAlertAction * _Nonnull cAction) {
+                             uLog(@"Alert1");
+                             [weakSelf modelPassed];
+                         }];
     
     [curAlertController show];
 }
@@ -72,24 +81,24 @@
                                                                   message:@"bMessage"
                                                                     style:SUIAlertStyleActionSheet];
     [curAlertController addAction:
-     [SUIAlertAction actionWithTitle:@"取消" style:SUIAlertActionStyleCancel handler:^(SUIAlertAction * _Nonnull cAction) {
+     [SUIAlertAction actionWithTitle:@"取消" style:SUIAlertActionCancel handler:^(SUIAlertAction * _Nonnull cAction) {
         uLog(@"Sheet Cancel");
     }]];
     
     [curAlertController addAction:
-     [SUIAlertAction actionWithTitle:@"Action1" style:SUIAlertActionStyleDefault handler:^(SUIAlertAction * _Nonnull cAction) {
+     [SUIAlertAction actionWithTitle:@"Action1" style:SUIAlertActionDefault handler:^(SUIAlertAction * _Nonnull cAction) {
         uLog(@"Action1");
         [weakSelf modelPassed];
     }]];
     
     [curAlertController addAction:
-     [SUIAlertAction actionWithTitle:@"Action2" style:SUIAlertActionStyleDestructive handler:^(SUIAlertAction * _Nonnull cAction) {
+     [SUIAlertAction actionWithTitle:@"Action2" style:SUIAlertActionDestructive handler:^(SUIAlertAction * _Nonnull cAction) {
         uLog(@"Action2");
         [weakSelf modelPassed];
     }]];
     
     [curAlertController addAction:
-     [SUIAlertAction actionWithTitle:@"Action3" style:SUIAlertActionStyleDefault handler:^(SUIAlertAction * _Nonnull cAction) {
+     [SUIAlertAction actionWithTitle:@"Action3" style:SUIAlertActionDefault handler:^(SUIAlertAction * _Nonnull cAction) {
         uLog(@"Action3");
         [weakSelf modelPassed];
     }]];
@@ -152,7 +161,9 @@
                         if ([cDestVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
                         {
                             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                                [subscriber sendNext:[RACTuple tupleWithObjectsFromArray:@[@"Segue", @"Push"]]];
+                                
+                                
+                                [subscriber sendNext:RACTuplePack(@"Segue", @"Push")];
                                 [subscriber sendCompleted];
                                 return nil;
                             }];
@@ -170,7 +181,7 @@
                         if ([cDestVC.sui_identifier isEqualToString:@"ViewControllerSecond"])
                         {
                             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                                [subscriber sendNext:[RACTuple tupleWithObjectsFromArray:@[@"Segue", @"Modal"]]];
+                                [subscriber sendNext:RACTuplePack(@"Segue", @"Modal")];
                                 [subscriber sendCompleted];
                                 return nil;
                             }];
@@ -267,7 +278,6 @@
             break;
     }
 }
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

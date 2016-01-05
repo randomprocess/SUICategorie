@@ -22,16 +22,16 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SUIUtilities (1.0.6):
+  - SUIUtilities (1.0.8):
     - AFNetworking (~> 3.0.2)
     - ReactiveCocoa (~> 2.5)
-    - SUIUtilities/Network (= 1.0.6)
-    - SUIUtilities/Utilities (= 1.0.6)
-  - SUIUtilities/Network (1.0.6):
+    - SUIUtilities/Network (= 1.0.8)
+    - SUIUtilities/Utilities (= 1.0.8)
+  - SUIUtilities/Network (1.0.8):
     - AFNetworking (~> 3.0.2)
     - ReactiveCocoa (~> 2.5)
     - SUIUtilities/Utilities
-  - SUIUtilities/Utilities (1.0.6):
+  - SUIUtilities/Utilities (1.0.8):
     - AFNetworking (~> 3.0.2)
     - ReactiveCocoa (~> 2.5)
 
@@ -44,6 +44,6 @@ SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   OCMock: 28def049ef47f996b515a8eeea958be7ccab2dbb
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SUIUtilities: c4b7c3e084aa3f5851aa3ab7ff41d283cde434e9
+  SUIUtilities: 8ab529f104d79b4ec0f253b7b7671a000ce16df8
 
 COCOAPODS: 0.39.0

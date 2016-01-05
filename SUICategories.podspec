@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'SUICategories'
-  s.version      = '1.0.4'
+  s.version      = '1.1.0'
   s.platform     = :ios, '7.0'
   s.summary      = 'A collection of useful Objective-C categories.'
 
@@ -34,6 +34,13 @@ Pod::Spec.new do |s|
   s.subspec 'BlurEffect' do |ss|
     ss.frameworks = 'Accelerate'
     ss.source_files = 'SUICategories/BlurEffect/*.{h,m}'
+  end
+
+  s.subspec 'CustomView' do |ss|
+    ss.dependency 'SUICategories/Foundation'
+    ss.dependency 'SUICategories/UIKit'
+    ss.dependency 'SUICategories/BlurEffect'
+    ss.source_files = 'SUICategories/CustomView/*.{h,m}'
   end
 
 end
