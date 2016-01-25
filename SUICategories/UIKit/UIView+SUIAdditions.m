@@ -34,11 +34,10 @@
         UIView *curMainView = [self sui_mainView];
         if (!curMainView) {
             curMainView = [[NSBundle mainBundle] loadNibNamed:gClassName(self) owner:self options:nil][0];
+            curMainView.frame = self.bounds;
+            curMainView.backgroundColor = [UIColor clearColor];
             [self setSui_mainView:curMainView];
             [self addSubview:curMainView];
-            
-            self.backgroundColor = [UIColor clearColor];
-            curMainView.frame = self.bounds;
             [curMainView sui_layoutPinnedToSuperview];
         }
     } else {
