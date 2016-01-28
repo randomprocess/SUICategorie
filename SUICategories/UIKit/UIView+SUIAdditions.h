@@ -39,7 +39,7 @@ typedef enum : NSUInteger {
 
 #pragma mark border
 
-@property (nonatomic) IBInspectable CGFloat sui_borderWidth; // Defaults to zero. [0,1]
+@property (nonatomic) IBInspectable CGFloat sui_borderWidth; // Defaults to zero.
 @property (nullable,nonatomic,copy) IBInspectable UIColor *sui_borderColor; // Defaults to opaque black.
 
 #pragma mark shadow
@@ -61,6 +61,9 @@ typedef enum : NSUInteger {
 @property (nonatomic) CGFloat sui_y;
 @property (nonatomic) CGFloat sui_width;
 @property (nonatomic) CGFloat sui_height;
+
+@property (nonatomic) CGPoint sui_origin;
+@property (nonatomic) CGSize sui_size;
 
 @property (readonly) CGFloat sui_maxX; // (x + width).
 @property (readonly) CGFloat sui_maxY; // (y + height).

@@ -200,6 +200,32 @@
     }
 }
 
+- (CGPoint)sui_origin
+{
+    return self.frame.origin;
+}
+- (void)setSui_origin:(CGPoint)sui_origin
+{
+    CGRect curRect = self.frame;
+    if (!CGPointEqualToPoint(curRect.origin, sui_origin)) {
+        curRect.origin = sui_origin;
+        self.frame = curRect;
+    }
+}
+
+- (CGSize)sui_size
+{
+    return self.frame.size;
+}
+- (void)setSui_size:(CGSize)sui_size
+{
+    CGRect curRect = self.frame;
+    if (!CGSizeEqualToSize(curRect.size, sui_size)) {
+        curRect.size = sui_size;
+        self.frame = curRect;
+    }
+}
+
 - (CGFloat)sui_maxX
 {
     return CGRectGetMaxX(self.frame);
