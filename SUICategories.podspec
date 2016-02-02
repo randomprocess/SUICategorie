@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
 s.name         = 'SUICategories'
-s.version      = '1.1.3'
+s.version      = '1.1.4'
 s.platform     = :ios, '7.0'
 s.summary      = 'A collection of useful Objective-C categories.'
 
