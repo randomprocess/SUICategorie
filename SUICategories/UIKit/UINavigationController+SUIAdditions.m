@@ -71,7 +71,9 @@
                                                  toViewController:(UIViewController *)toVC
 {
     if (operation == UINavigationControllerOperationPush) {
-        toVC.sui_sourceVC = fromVC;
+        if (!toVC.sui_sourceVC) {
+            toVC.sui_sourceVC = fromVC;
+        }
     }
     if (self.sui_delegate) {
         if ([self.sui_delegate respondsToSelector:@selector(navigationController:animationControllerForOperation:fromViewController:toViewController:)]) {
